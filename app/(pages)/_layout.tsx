@@ -14,22 +14,17 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      {/* {<Stack>
-        { <<Stack.Screen name="(tabs)" options={{ headerShown: false }} />> }
+      <Stack>
+        {/* <<Stack.Screen name="(tabs)" options={{ headerShown: false }} />> */}
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         <Stack.Screen name="(pages)" options={{
           // Hide the header for this route
           headerShown: false,
-        }}/>
-        <Stack.Screen name="explore" options={{title: 'Explore',}}/>
-      </Stack>} */}
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          // also set default background so iOS push animations match
-          contentStyle: { backgroundColor: '#303030ff' },
         }}
       />
+        <Stack.Screen name="explore" options={{title: 'Explore',}}/>
+      </Stack>
+      
     </ThemeProvider>
   );
 }
