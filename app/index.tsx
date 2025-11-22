@@ -1,98 +1,172 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
+import InnovoPFP from '../assets/images/InnovoLogo.png';
+import Insta from '../assets/images/InstaLogo.png';
+import Youtube from '../assets/images/YTLogo.png';
+import TT from '../assets/images/TTLogo.png';
+
+
+import Michael from '../assets/images/Michael.jpg';
+
+import {Dimensions} from 'react-native';
+
+const pallete = {
+  InnovoYellow: '#eeea09ff',
+  dark: '#2c2c2cff',
+  black: '#000000',
+  bigBox: '#191919'
+
+  
+}
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const router = useRouter();
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
+      <TopBar/>
+      <ScrollView>
+      <View style= {{flexDirection: 'row', justifyContent: 'space-evenly',marginVertical: 30, marginHorizontal: 20, backgroundColor: '#272727'}}>
+        <View style= {{backgroundColor: '#272727'}}>
+          <View style={[styles.bigBox, {maxWidth: (windowWidth/2) - (windowWidth/20), justifyContent: 'flex-start', alignSelf: 'flex-start', }]}>
+            <Text style = {styles.bigHeadText}>About us</Text>
+            <Text style = {styles.subText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel dolor ante. Nullam feugiat egestas elit et vehicula. Proin venenatis, orci nec cursus tristique, nulla risus mattis eros, id accumsan massa elit eu augue. Mauris massa ipsum, pharetra id nibh eget, sodales facilisis enim.</Text>
+          </View>
+        </View>
+        <View style={{flex: 1}}></View>
+        <View style={{alignSelf: 'center', backgroundColor: '#272727'}}>
+          <View style={styles.bigBox}>
+            <Image source={Michael} style={{width: windowWidth/3, height: windowWidth/3}}resizeMode="contain"/>
+          </View>
+        </View>
+        <View style={{flex: 1}}></View>
+      </View>
+      <View style= {{flexDirection: 'row', justifyContent: 'space-evenly',marginVertical: 30, marginHorizontal: 20, backgroundColor: '#272727'}}>
+        <View style= {{backgroundColor: '#272727'}}>
+          <View style={[styles.bigBox, {maxWidth: (windowWidth/2) - (windowWidth/20), justifyContent: 'flex-start', alignSelf: 'flex-start', }]}>
+            <Text style = {styles.bigHeadText}>About us</Text>
+            <Text style = {styles.subText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel dolor ante. Nullam feugiat egestas elit et vehicula. Proin venenatis, orci nec cursus tristique, nulla risus mattis eros, id accumsan massa elit eu augue. Mauris massa ipsum, pharetra id nibh eget, sodales facilisis enim.</Text>
+          </View>
+        </View>
+        <View style={{flex: 1}}></View>
+        <View style={{alignSelf: 'center', backgroundColor: '#272727'}}>
+          <View style={styles.bigBox}>
+            <Image source={Michael} style={{width: windowWidth/3, height: windowWidth/3}}resizeMode="contain"/>
+          </View>
+        </View>
+        <View style={{flex: 1}}></View>
+      </View>
+      <View style={[styles.topbar, {height:75, alignItems: 'center', gap: 7,justifyContent: 'center',flexDirection: 'row'}]}>
+        <TouchableOpacity onPress={() => router.push("https://www.instagram.com/")}>
+          <Image source={Insta} style={{width: 30, height: 30}}resizeMode="contain"/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("https://www.youtube.com/")}>
+          <Image source={TT} style={{width: 30, height: 30}}resizeMode="contain"/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("https://www.tiktok.com/")}>
+          <Image source={Youtube} style={{width: 30, height: 30}}resizeMode="contain"/>
+        </TouchableOpacity>
+        {/*<TouchableOpacity onPress={() => router.push("/")}>*/}
+          <Text style={{fontSize: 20, fontWeight: '200', marginLeft: 4, color: pallete.InnovoYellow}}>innovo912@gmail.com</Text>
+        {/*</TouchableOpacity>*/}
+      </View>
+      </ScrollView>
+    </SafeAreaView>
+
   );
 }
 
+function TopBar() {
+
+  const router = useRouter();
+
+  return (
+    <View>
+      <View style={[styles.topbar, {justifyContent: 'space-between'}]}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image source={InnovoPFP} style={{width: 40, height: 40}}resizeMode="contain"/>
+          <Text style={[styles.titleText, {marginLeft: 10}]}>Innovo</Text>
+        </View>
+        <View style={{alignItems: 'center', flexDirection: 'row-reverse', }}>
+          <TouchableOpacity onPress={() => router.push("/")}>
+            <Text style={styles.headerText}>Meet the Team</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push("/")}>
+            <Text style={styles.headerText}>Sponsors</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push("/")}>
+            <Text style={styles.headerText}>History</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push("/")}>
+            <Text style={styles.headerText}>Events</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+
+
+
+
 const styles = StyleSheet.create({
-  titleContainer: {
+  topbar: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    backgroundColor: pallete.black,
+    padding: 20
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  titleText: {
+    fontSize: 20,
+    color: pallete.InnovoYellow,
+    fontWeight: "500"
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  bigHeadText: {
+      fontSize: 30, 
+      fontWeight: '500', 
+      color: pallete.InnovoYellow, 
+      marginBottom: 8 
+  },
+  subText: {
+      fontSize: 20, 
+      fontWeight: '200', 
+      color: pallete.InnovoYellow, 
+      marginBottom: 2 
+  },
+
+  headerText: {
+    fontSize: 20,
+    color: pallete.InnovoYellow,
+    fontWeight: "500",
+    paddingLeft: 30,
+  },
+  headerImage: {
+    color: '#525252ff',
+    bottom: -90,
+    left: -35,
     position: 'absolute',
   },
+  titleContainer: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  bigBox: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+    backgroundColor: pallete.bigBox,
+    borderRadius: 12,
+    padding: 16,
+  }
+
 });

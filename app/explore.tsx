@@ -1,77 +1,98 @@
-import {useRouter } from 'expo-router';
+import { Image } from 'expo-image';
+import { Platform, StyleSheet } from 'react-native';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  View
-} from 'react-native';
-import InnovoPFP from '../assets/images/InnovoLogo.png';
+import { HelloWave } from '@/components/hello-wave';
+import ParallaxScrollView from '@/components/parallax-scroll-view';
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { Link } from 'expo-router';
 
-
-const pallete = {
-  InnovoYellow: '#eeea09ff',
-  dark: '#2c2c2cff',
-  black: '#000000'
-}
-
-export default function TabTwoScreen() {
-  const router = useRouter();
+export default function OtherScreen() {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#3d3d3dff' }}>
-      <View style={[styles.topbar, {justifyContent: 'space-between'}]}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Image source={InnovoPFP} style={{width: 40, height: 40}}resizeMode="contain"/>
-          <Text style={[styles.titleText, {marginLeft: 10}]}>Innovo</Text>
-        </View>
-        <View style={{alignItems: 'center', flexDirection: 'row-reverse', }}>
-          <TouchableOpacity onPress={() => router.push("/")}>
-            <Text style={styles.headerText}>About</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push("/")}>
-            <Text style={styles.headerText}>Sponsors</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push("/")}>
-            <Text style={styles.headerText}>Othersection</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      <ScrollView>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={
+        <Image
+          source={require('@/assets/images/partial-react-logo.png')}
+          style={styles.reactLogo}
+        />
+      }>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Welcome!</ThemedText>
+        <HelloWave />
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText>
+          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+          Press{' '}
+          <ThemedText type="defaultSemiBold">
+            {Platform.select({
+              ios: 'cmd + d',
+              android: 'cmd + m',
+              web: 'F12',
+            })}
+          </ThemedText>{' '}
+          to open developer tools.
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <Link href="/modal">
+          <Link.Trigger>
+            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+          </Link.Trigger>
+          <Link.Preview />
+          <Link.Menu>
+            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
+            <Link.MenuAction
+              title="Share"
+              icon="square.and.arrow.up"
+              onPress={() => alert('Share pressed')}
+            />
+            <Link.Menu title="More" icon="ellipsis">
+              <Link.MenuAction
+                title="Delete"
+                icon="trash"
+                destructive
+                onPress={() => alert('Delete pressed')}
+              />
+            </Link.Menu>
+          </Link.Menu>
+        </Link>
 
-      </ScrollView>
-    </SafeAreaView>
+        <ThemedText>
+          {`Tap the Explore tab to learn more about what's included in this starter app.`}
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText>
+          {`When you're ready, run `}
+          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
+          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
+          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+        </ThemedText>
+      </ThemedView>
+    </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  topbar: {
-    flexDirection: 'row',
-    backgroundColor: pallete.black,
-    padding: 20
-  },
-  titleText: {
-    fontSize: 20,
-    color: pallete.InnovoYellow,
-    fontWeight: "500"
-  },
-  headerText: {
-    fontSize: 20,
-    color: pallete.InnovoYellow,
-    fontWeight: "500",
-    paddingLeft: 30,
-  },
-
-  headerImage: {
-    color: '#525252ff',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
   titleContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
+  },
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
+  },
+  reactLogo: {
+    height: 178,
+    width: 290,
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
   },
 });
