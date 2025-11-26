@@ -18,10 +18,10 @@ import Youtube from '../assets/images/YTLogo.png';
 
 import Michael from '../assets/images/Michael.jpg';
 
-
+// #eeea09ff
 
 const pallete = {
-  InnovoYellow: '#eeea09ff',
+  InnovoYellow: '#e2e610ff',
   dark: '#2c2c2cff',
   black: '#000000',
   bigBox: '#191919'
@@ -44,7 +44,7 @@ export default function HomeScreen() {
         <View style= {{backgroundColor: '#272727'}}>
           <View style={[styles.bigBox, {maxWidth: (windowWidth/2) - (windowWidth/20), justifyContent: 'flex-start', alignSelf: 'flex-start', }]}>
             <Text style = {styles.bigHeadText}>About us</Text>
-            <Text style = {styles.subText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel dolor ante. Nullam feugiat egestas elit et vehicula. Proin venenatis, orci nec cursus tristique, nulla risus mattis eros, id accumsan massa elit eu augue. Mauris massa ipsum, pharetra id nibh eget, sodales facilisis enim.</Text>
+            <Text style = {styles.subText}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
           </View>
         </View>
         <View style={{flex: 1}}></View>
