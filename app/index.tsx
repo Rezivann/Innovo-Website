@@ -40,56 +40,57 @@ export default function HomeScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
       <TopBar/>
       <ScrollView>
-      <View style= {{flexDirection: 'row', justifyContent: 'space-evenly',marginVertical: 30, marginHorizontal: 20, backgroundColor: '#272727'}}>
+      <View style= {{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly',marginVertical: 30, marginHorizontal: 20, backgroundColor: '#272727'}}>
         <View style= {{backgroundColor: '#272727'}}>
-          <View style={[styles.bigBox, {maxWidth: (windowWidth/2) - (windowWidth/20), justifyContent: 'flex-start', alignSelf: 'flex-start', }]}>
+          <View style={[styles.bigBox, {flex: 1, justifyContent: 'flex-start', alignSelf: 'flex-start', flexWrap: 'wrap', flexShrink: 1}]}>
             <Text style = {styles.bigHeadText}>About us</Text>
-            <Text style = {styles.subText}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
+            <View style={{flexShrink: 1, flex: 1}}>
+            <Text adjustsFontSizeToFit={true } style = {styles.subText}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
+            </View>
           </View>
         </View>
-        <View style={{flex: 1}}></View>
+        <View style={{flex: 2}}></View>
         <View style={{alignSelf: 'center', backgroundColor: '#272727'}}>
           <View style={styles.bigBox}>
-            <Image source={Michael} style={{width: windowWidth/3, height: windowWidth/3}}resizeMode="contain"/>
+            <Image source={Michael} style={{flex: 1}}resizeMode="contain"/>
           </View>
         </View>
         <View style={{flex: 1}}></View>
       </View>
-      <View style= {{flexDirection: 'row', justifyContent: 'space-evenly',marginVertical: 30, marginHorizontal: 20, backgroundColor: '#272727'}}>
+      <View style= {{flexDirection: 'row', justifyContent: 'space-evenly', marginVertical: 30, marginHorizontal: 20}}>
         
-          <View style={[styles.bigBox, {width: (windowWidth*.9) , alignItems: 'center'}]}>
+          <View style={[styles.bigBox, {flex: 1 , alignItems: 'stretch'}]}>
             <View style={{justifyContent: 'center'}}>
               <Text style = {styles.bigHeadText}></Text>
             </View>
-            <View style={{flexDirection: 'row', width: (windowWidth*.85), justifyContent: 'space-between', paddingBottom: 20}}>
-              <View style={{}}></View>
-              <View style={{paddingHorizontal: 20, alignItems: 'center', maxWidth: (windowWidth*.2)}}>
+            <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-evenly', paddingBottom: 20}}>
+              
+              <View style={{paddingHorizontal: 20, alignItems: 'center', flex: 2}}>
                 <Text style = {styles.bigStat}>14</Text>
                 <Text style = {styles.littleStat}>Seasons played</Text>
                 
               </View>
               
-              <View style={{ backgroundColor: pallete.InnovoYellow, width: 2}}></View>
+              <View style={{ backgroundColor: pallete.InnovoYellow, width: 1}}></View>
 
-              <View style={{paddingHorizontal: 20, alignItems: 'center', maxWidth: (windowWidth*.2)}}>
+              <View style={{paddingHorizontal: 20, alignItems: 'center', flex: 2}}>
                 <Text style = {styles.bigStat}>16</Text>
                 <Text style = {styles.littleStat}>Awards won since 2022</Text>
               </View>
 
-              <View style={{ backgroundColor: pallete.InnovoYellow, width: 2}}></View>
+              <View style={{ backgroundColor: pallete.InnovoYellow, width: 1}}></View>
 
-              <View style={{paddingHorizontal: 20, alignItems: 'center', maxWidth: (windowWidth*.2)}}>
+              <View style={{paddingHorizontal: 20, alignItems: 'center', flex: 2}}>
                 <Text style = {styles.bigStat}>15</Text>
                 <Text style = {styles.littleStat}>Active Members</Text>
               </View>
 
-              <View style={{ backgroundColor: pallete.InnovoYellow, width: 2}}></View>
+              <View style={{ backgroundColor: pallete.InnovoYellow, width: 1}}></View>
 
-              <View style={{paddingHorizontal: 20, maxWidth: (windowWidth*.2), alignItems: 'center'}}>
+              <View style={{paddingHorizontal: 20, flex: 2, alignItems: 'center'}}>
                 <Text style = {styles.bigStat}>00</Text>
                 <Text style = {styles.littleStat}>Seasons played</Text>
               </View>
-              <View style={{}}></View>
 
             </View>
             
@@ -198,7 +199,7 @@ const styles = StyleSheet.create({
       fontWeight: '200', 
       color: pallete.InnovoYellow,
       paddingRight:20, 
-      marginBottom: 2 
+      marginBottom: 2,
   },
 
   headerText: {
