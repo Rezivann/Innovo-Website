@@ -30,71 +30,75 @@ import Shmuel from '../assets/images/PFPs/Shmuel.png';
 import Steve from '../assets/images/PFPs/Steve.png';
 import Winston from '../assets/images/PFPs/Winston.png';
 
-
+import bg from '../assets/images/websiteBg.png';
 
 import topBar, { TopBar } from './index';
+import bottomBar, { BottomBar } from './index';
+import { ZoomIn } from 'react-native-reanimated';
+import { ImageBackground } from 'expo-image';
 const pallete = {
   InnovoYellow: '#eeea09ff',
   dark: '#2c2c2cff',
   black: '#000000',
   bigBox: '#191919',
-  accent: '#141414'
+  accent: '#141414',
+  bgColor: '#272727'
 }
-
 const windowWidth = Dimensions.get('window').width;
 export default function HomeScreen() {
   const router = useRouter();
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: pallete.bgColor }}>
         
       <TopBar/>
+      {/* <ImageBackground source={bg} resizeMode="cover" style={{flex: 1, justifyContent: 'center',}}> */}
       <ScrollView>
       <View style={[styles.bigBox, {width: 200, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Build Team: </Text>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', maxWidth: windowWidth}}>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', maxWidth: windowWidth, backgroundColor: pallete.bgColor}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Sean} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Sean} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Sean Zamidar</Text>
             </View>
             <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.pfpName, {alignSelf: 'flex-end', fontSize: 17.5}]}>Head/Captain</Text>
+                <Text style={[styles.leaderText, {fontSize: 17.5}]}>Head/Captain</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Darren} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Darren} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Darren Chen</Text>
             </View>
             <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.pfpName, {alignSelf: 'flex-end'}]}>Captain</Text>
+                <Text style={styles.leaderText}>Captain</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Micah} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Micah} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Micah Newman</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Winston} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Winston} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Winston Lin</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Steve} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Steve} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Steve Zamidar</Text>
             </View>
@@ -103,31 +107,31 @@ export default function HomeScreen() {
       <View style={[styles.bigBox, {width: 230, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Coding Team: </Text>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap'}}>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={David} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={David} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>David Balzac</Text>
             </View>
             <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.pfpName, {alignSelf: 'flex-end'}]}>Head</Text>
+                <Text style={styles.leaderText}>Head</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Ivan} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Ivan} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Ivan Reznikov</Text>
             </View>
         </View>
         
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Shmuel} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Shmuel} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Shmuel Silver</Text>
             </View>
@@ -136,74 +140,77 @@ export default function HomeScreen() {
       <View style={[styles.bigBox, {width: 250, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Outreach Team: </Text>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', maxWidth: windowWidth}}>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', maxWidth: windowWidth, backgroundColor: pallete.bgColor}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Maxx} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Maxx} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Maxx Star</Text>
             </View>
             <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.pfpName, {alignSelf: 'flex-end'}]}>Head</Text>
+                <Text style={styles.leaderText}>Head</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Michael} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Michael} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Michael Persaud</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Mathew} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Mathew} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Mathew Illisaca</Text>
             </View>
             
         </View>
 
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Mohammad} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Mohammad} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Mohammad Faiz</Text>
             </View>
             
         </View>
 
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Riya} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Riya} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Riya Kumar</Text>
             </View>
             
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Fabian} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Fabian} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Fabian Cadima</Text>
             </View>
         </View>
-        <View style={[styles.bigBox, {width: 400, height: 100, flexDirection: 'row'}]}>
-            <View style = {{ alignItems: 'center', flexDirection: 'row'}}>
+        <View style={styles.idcard}>
+            <View style = {styles.miniBox}>
                 <View style={styles.pfp}>
-                    <Image source={Alessandra} style={{width: 70, height: 70, borderRadius: 40, borderWidth: 3, borderColor: pallete.InnovoYellow}}/>
+                    <Image source={Alessandra} style={styles.image}/>
                 </View>
                 <Text style={styles.pfpName}>Alessandra Tetsoti</Text>
             </View>
         </View>
 
       </View>
+      <View style= {{height: 40}}></View>
+      <BottomBar/>
         </ScrollView>
+    {/* {</ImageBackground>} */}
     </SafeAreaView>
   );
 }
@@ -233,12 +240,30 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       marginBottom: 0 
   },
+  image: {
+        width: 90, 
+        height: 90, 
+        borderRadius: 45, 
+        borderWidth: 3, 
+        borderColor: pallete.InnovoYellow
+        
+  },
   littleStat: {
       fontSize: 25, 
       fontWeight: '400', 
       color: pallete.InnovoYellow, 
       textAlign: 'center',
       marginBottom: 4
+  },
+  leaderText: {
+    fontSize: 21, 
+    fontWeight: '500',
+    marginLeft: 20, 
+    color: pallete.InnovoYellow,
+    paddingRight:20, 
+    marginBottom: 2,
+    textDecorationLine: 'underline',
+    alignSelf: 'flex-end'
   },
   subText: {
       fontSize: 20, 
@@ -271,6 +296,24 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
   },
+  idcard: {
+    marginHorizontal: 20,
+    marginVertical: 10,
+    backgroundColor: pallete.bigBox,
+    borderRadius: 12,
+    padding: 16,
+    width: 400, 
+    height: 125, 
+    flexDirection: 'row',
+    shadowOffset: {
+        width: -4,
+        height: 5
+    },
+    shadowColor: '#a2a0128d',
+    shadowRadius: 4,
+    elevation: 10
+    
+  },
   pfp: {
     width: 70,
     height: 70,
@@ -280,8 +323,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 12,
   },
+  miniBox: {
+    alignItems: 'center', 
+    flexDirection: 'row', 
+    paddingLeft: 20
+  },
   pfpName: {
-    fontSize: 20, 
+    fontSize: 25, 
     fontWeight: '400',
     marginLeft: 20, 
     color: pallete.InnovoYellow,
