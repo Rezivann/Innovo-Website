@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useLayoutEffect, useState, useRef} from 'react';
+import { motion } from 'framer-motion';
 
 import {
   Animated,
@@ -56,31 +57,30 @@ type Person = {
     name: string;
     image: ImageSourcePropType;
     specialrole: string;
-    magnify: boolean;
 }
 
 const buildTeam: Person[] = [
-    {name: 'Sean Zamidar', image: Sean, specialrole: "Head/Captain", magnify: false},
-    {name: 'Darren Chen', image: Darren, specialrole: "Captain", magnify: false},
-    {name: 'Micah Newman', image: Micah, specialrole: "", magnify: false},
-    {name: 'Winston Lin', image: Winston, specialrole: "", magnify: false},
-    {name: 'Steve Zamidar', image: Steve, specialrole: "", magnify: false},
+    {name: 'Sean Zamidar', image: Sean, specialrole: "Head/Captain"},
+    {name: 'Darren Chen', image: Darren, specialrole: "Captain"},
+    {name: 'Micah Newman', image: Micah, specialrole: ""},
+    {name: 'Winston Lin', image: Winston, specialrole: ""},
+    {name: 'Steve Zamidar', image: Steve, specialrole: ""},
 ]
 
 const codingTeam: Person[] = [
-    {name: 'David Balzac', image: David, specialrole: "Head", magnify: false},
-    {name: 'Ivan Reznikov', image: Ivan, specialrole: "", magnify: false},
-    {name: 'Shmuel Silver', image: Shmuel, specialrole: "", magnify: false},
+    {name: 'David Balzac', image: David, specialrole: "Head"},
+    {name: 'Ivan Reznikov', image: Ivan, specialrole: ""},
+    {name: 'Shmuel Silver', image: Shmuel, specialrole: ""},
 ]
 
 const outreachTeam: Person[] = [
-    {name: 'Maxx Star', image: Maxx, specialrole: "Head", magnify: false},
-    {name: 'Michael Persaud', image: Michael, specialrole: "", magnify: false},
-    {name: 'Mathew Illisaca', image: Mathew, specialrole: "", magnify: false},
-    {name: 'Mohammad Faiz', image: Mohammad, specialrole: "", magnify: false},
-    {name: 'Riya Kumar', image: Steve, specialrole: "", magnify: false},
-    {name: 'Fabian Cadima', image: Fabian, specialrole: "", magnify: false},
-    {name: 'Alessandra Tetsoti', image: Alessandra, specialrole: "", magnify: false},
+    {name: 'Maxx Star', image: Maxx, specialrole: "Head"},
+    {name: 'Michael Persaud', image: Michael, specialrole: ""},
+    {name: 'Mathew Illisaca', image: Mathew, specialrole: ""},
+    {name: 'Mohammad Faiz', image: Mohammad, specialrole: ""},
+    {name: 'Riya Kumar', image: Steve, specialrole: ""},
+    {name: 'Fabian Cadima', image: Fabian, specialrole: ""},
+    {name: 'Alessandra Tetsoti', image: Alessandra, specialrole: ""},
 ]
 
 
@@ -107,45 +107,6 @@ export default function HomeScreen() {
   const [width, height] = useWindowSize();
 
   const makeSmall = Boolean(width < 800);
-  
-
-  const animation = useRef<Animated.CompositeAnimation>(null);
-  const scale = useRef(new Animated.Value(1)).current
-  const makeBigger = () => {
-    animation.current = Animated.timing(scale, {
-        toValue: 2,
-        duration: 500,
-        useNativeDriver: true,
-    })
-    animation.current.start();
-  };
-  const makeSmaller = () => {
-    animation.current = Animated.timing(scale, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-    })
-    animation.current.start();
-  };
-
-
-
-  const [build, setBuild] = useState(buildTeam);
-  function handleEditZoom(name: string, mag: boolean) {
-        const newList = buildTeam.map((member) => {
-            if (member.name === name) {
-                const updatedMember = {
-                    ...member,
-                    magnify: mag,
-                };
-                return updatedMember;
-            }
-            else {
-                return member;
-            }   
-        })
-        setBuild(newList);
-    }
 
     
 
@@ -165,7 +126,7 @@ export default function HomeScreen() {
 
 
     {makeSmall ? (
-        build.map((member: Person) => (
+        buildTeam.map((member: Person) => (
             <View  style={styles.idcardSmall}>
                 
                 <View style = {[styles.miniBox]}>
@@ -181,39 +142,25 @@ export default function HomeScreen() {
 
     ))) : (
 
-        build.map((member: Person) => (
-        <div className="container" onMouseOver={() => (handleEditZoom(member.name, true))}style={{}} onMouseLeave={() => (handleEditZoom(member.name, false))}>
-        {!member.magnify ? (
-            <View style={styles.idcard}>
-                <View style = {styles.miniBox}>
-                    <View style={styles.pfp}>
-                        <Image source={member.image} style={styles.image}/>
+        buildTeam.map((member: Person) => (
+        // <div className="container" onMouseOver={() => (handleEditZoom(member.name, true), makeBigger)}style={{}} onMouseLeave={() => (handleEditZoom(member.name, false), makeSmaller)}>
+        
+        
+                <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
+                    <View style={styles.idcard}>
+                        <View style = {styles.miniBox}>
+                            <View style={styles.pfp}>
+                                <Image source={member.image} style={styles.image}/>
+                            </View>
+                            <Text style={styles.pfpName}>{member.name}</Text>
+                        </View>
+                        <View style={{flexDirection: 'column-reverse',flex: 1}}> 
+                            <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                        </View>
                     </View>
-                    <Text style={styles.pfpName}>{member.name} </Text>
-                </View>
-                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-                </View>
-            </View>
-        ) : (
-            <Animated.View style={[
-                styles.idcard,
-                {transform: [{scale}]}
-            ]}>
-                <View style = {styles.miniBox}>
-                    <View style={styles.pfp}>
-                        <Image source={member.image} style={styles.image}/>
-                    </View>
-                    <Text style={styles.pfpName}>{member.name} </Text>
-                </View>
-                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-                </View>
-            </Animated.View>
-            
-        )}
-        </div> //transform: [{scale: 1.1}]
+                </motion.button>
     )))}
+    
       </View>
       <View style={[styles.bigBox, {width: 230, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Coding Team: </Text>
@@ -235,17 +182,19 @@ export default function HomeScreen() {
     ))) : (
         codingTeam.map((member: Person) => (
         
-        <View style={styles.idcardSmall}>
-            <View style = {styles.miniBox}>
-                <View style={styles.pfp}>
-                    <Image source={member.image} style={styles.image}/>
-                </View>
-                <Text style={styles.pfpName}>{member.name}</Text>
-            </View>
-            <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-            </View>
-        </View>
+        <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
+                    <View style={styles.idcard}>
+                        <View style = {styles.miniBox}>
+                            <View style={styles.pfp}>
+                                <Image source={member.image} style={styles.image}/>
+                            </View>
+                            <Text style={styles.pfpName}>{member.name}</Text>
+                        </View>
+                        <View style={{flexDirection: 'column-reverse',flex: 1}}> 
+                            <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                        </View>
+                    </View>
+                </motion.button>
     )))}
       </View>
       <View style={[styles.bigBox, {width: 250, height: 70, marginTop: 20}]}>
@@ -268,17 +217,19 @@ export default function HomeScreen() {
     ))) : (
         outreachTeam.map((member: Person) => (
         
-        <View style={styles.idcard}>
-            <View style = {styles.miniBox}>
-                <View style={styles.pfp}>
-                    <Image source={member.image} style={styles.image}/>
-                </View>
-                <Text style={styles.pfpName}>{member.name}</Text>
-            </View>
-            <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-            </View>
-        </View>
+        <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
+                    <View style={styles.idcard}>
+                        <View style = {styles.miniBox}>
+                            <View style={styles.pfp}>
+                                <Image source={member.image} style={styles.image}/>
+                            </View>
+                            <Text style={styles.pfpName}>{member.name}</Text>
+                        </View>
+                        <View style={{flexDirection: 'column-reverse',flex: 1}}> 
+                            <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                        </View>
+                    </View>
+        </motion.button>
     )))}
 
       </View>
