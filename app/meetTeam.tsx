@@ -42,6 +42,7 @@ import topBar, { TopBar } from './index';
 import bottomBar, { BottomBar } from './index';
 import { ZoomIn } from 'react-native-reanimated';
 import { ImageBackground } from 'expo-image';
+import AnimatedComponent from 'react-native-reanimated/lib/typescript/createAnimatedComponent/AnimatedComponent';
 const pallete = {
   InnovoYellow: '#eeea09ff',
   dark: '#2c2c2cff',
@@ -108,18 +109,24 @@ export default function HomeScreen() {
   const makeSmall = Boolean(width < 800);
   
 
-  const animation = useRef(null);
-  const viewScale = useRef(new Animated.Value(0)).current
-//   const makeBigger = () => {
-//     animation.current = Animated.timing(viewScale, {
-//         toValue: 1.1,
-//         duration: 200,
-//         easing: Easing.bounce,
-//         useNativeDriver: true
-//     })
-//     animation.current.start()
-//   };
-  const makeSmaller = () => {};
+  const animation = useRef<Animated.CompositeAnimation>(null);
+  const scale = useRef(new Animated.Value(1)).current
+  const makeBigger = () => {
+    animation.current = Animated.timing(scale, {
+        toValue: 2,
+        duration: 500,
+        useNativeDriver: true,
+    })
+    animation.current.start();
+  };
+  const makeSmaller = () => {
+    animation.current = Animated.timing(scale, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+    })
+    animation.current.start();
+  };
 
 
 
@@ -191,7 +198,18 @@ export default function HomeScreen() {
         ) : (
             <Animated.View style={[
                 styles.idcard,
-            ]}/>
+                {transform: [{scale}]}
+            ]}>
+                <View style = {styles.miniBox}>
+                    <View style={styles.pfp}>
+                        <Image source={member.image} style={styles.image}/>
+                    </View>
+                    <Text style={styles.pfpName}>{member.name} </Text>
+                </View>
+                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
+                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                </View>
+            </Animated.View>
             
         )}
         </div> //transform: [{scale: 1.1}]
