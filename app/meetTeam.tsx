@@ -2,6 +2,8 @@ import { useRouter } from 'expo-router';
 import React, { useLayoutEffect, useState, useRef} from 'react';
 import { motion } from 'framer-motion';
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 import {
   Animated,
   Image,
@@ -20,7 +22,7 @@ import {
 import { Shadow } from 'react-native-shadow-2';
 import InnovoPFP from '../assets/images/InnovoLogo.png';
 import pfp from '../assets/images/DefaultAvatar.png';
-
+import meetTeamPhoto from '../assets/images/meetTeamPhoto.jpg';
 import Alessandra from '../assets/images/PFPs/Alessandra.png';
 import Darren from '../assets/images/PFPs/Darren.png';
 import David from '../assets/images/PFPs/David.png';
@@ -78,7 +80,7 @@ const outreachTeam: Person[] = [
     {name: 'Michael Persaud', image: Michael, specialrole: ""},
     {name: 'Mathew Illisaca', image: Mathew, specialrole: ""},
     {name: 'Mohammad Faiz', image: Mohammad, specialrole: ""},
-    {name: 'Riya Kumar', image: Steve, specialrole: ""},
+    {name: 'Riya Kumar', image: Riya, specialrole: ""},
     {name: 'Fabian Cadima', image: Fabian, specialrole: ""},
     {name: 'Alessandra Tetsoti', image: Alessandra, specialrole: ""},
 ]
@@ -119,6 +121,17 @@ export default function HomeScreen() {
       <TopBar/>
       {/* <ImageBackground source={bg} resizeMode="cover" style={{flex: 1, justifyContent: 'center',}}> */}
       <ScrollView>
+        <ImageBackground blurRadius={4} source={meetTeamPhoto} style={{height: height*.5, justifyContent: 'center'}}>
+        <View style= {{flex: 1}}></View>
+        <View style= {{padding: 0.5, alignItems: 'center', backgroundColor: '#a2a0127c',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
+          <View style={[styles.bigBox, {marginHorizontal: 10, backgroundColor: '#000000',flexDirection: 'row', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, elevation: 20, }]}>
+                <Text style={[styles.bigHeadText, {fontSize: 45}]}>Meet the Team</Text>
+          </View>
+        </View>
+        <View style={{flex: 1, flexDirection: 'column-reverse'}}>
+            <LinearGradient colors={['#27272700', '#272727']} style={{height: 100, width: 'auto'}} />
+        </View>
+      </ImageBackground>
       <View style={[styles.bigBox, {width: 200, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Build Team: </Text>
       </View>

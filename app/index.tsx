@@ -1,6 +1,8 @@
 import { useRouter } from 'expo-router';
 import React, { useLayoutEffect, useState } from 'react';
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 import {
   Image,
   SafeAreaView,
@@ -99,11 +101,16 @@ export default function HomeScreen() {
       <TopBar/>
       <ScrollView>
       <ImageBackground source={NewMichael} resizeMode="cover" style={{minHeight: height, flex: 1, justifyContent: 'center'}}>
+        <View style={{flex: 1}}></View>
         <View style= {{marginBottom: height*.1,padding: 0.5, alignItems: 'center', backgroundColor: '#a2a0127c',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
           <View style={[styles.bigBox, {marginHorizontal: 10, backgroundColor: '#000000',flexDirection: 'row', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, elevation: 20, }]}>
                 <Image source={InnovoWide} style={{height: width*.17, width: width*.4}}resizeMode="contain"/>
                 {/* {<Text style={[styles.titleText, {marginLeft: 10, fontSize: width*0.08, fontWeight: '500', color: '#fbcc0c'}]}>Innovo</Text>} */}
           </View>
+          
+        </View>
+        <View style={{flex: 1, flexDirection: 'column-reverse'}}>
+              <LinearGradient colors={['#27272700', '#272727']} style={{height: 150, width: 'auto'}} />
         </View>
       </ImageBackground>
 
