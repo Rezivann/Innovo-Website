@@ -83,7 +83,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
       <TopBar/>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground blurRadius={5} source={displayImage} resizeMode='cover'  style={{height: height*.5, width: width, justifyContent: 'center'}}>
               <View style= {{flex: 1}}></View>
               <View style= {{padding: 0.5, alignItems: 'center', backgroundColor: '#a2a0127c',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
@@ -96,24 +96,20 @@ export default function HomeScreen() {
               </View>
         </ImageBackground>
 
-        <View style={[styles.bigBox, {flexDirection: 'row', marginTop: 40 ,justifyContent: 'center', flexWrap: 'wrap', flex: 1}]}>
-                    <View style={{maxWidth: widthFactor, paddingLeft: 10}}>
-                      <Text style = {styles.bigHeadText}>2024-2025: Into the Deep</Text>
-    
-                      <Image source={intoTheDeep} resizeMode='contain' style={{height: 200, width: 200, alignSelf: 'center'}}/>
-                    </View>
-                    <View style={{ width: 20}}></View>
+        <View style={[styles.bigBox, {marginTop: 40, flexShrink: 1}]}>                  
+                    <Text style = {[styles.bigHeadText, {marginLeft: 10}]}>2024-2025: Into the Deep</Text>
+                    
                     <View style={{flex: 1,}}>
-                      <View style={[styles.littleBox, {borderColor: pallete.InnovoYellow, borderWidth: 1}]}>
+                      <View style={styles.specialLittleBox}>
                         <View style={{flex: 1, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>	Canadian Rockies Premier Event</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Canadian Rockies Premier Event</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award 3rd Place</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize}]}>July 25-27, 2025</Text>
                         </View>
                       </View>
-                      <View style={[styles.littleBox, {borderColor: pallete.InnovoYellow, borderWidth: 1}]}>
+                      <View style={styles.specialLittleBox}>
                         <View style={{flex: 1, padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Championship</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award 1st Place</Text>
@@ -151,7 +147,91 @@ export default function HomeScreen() {
                         </View>
                       </View>
                     </View>
+          </View>
+          <View style={[styles.bigBox, {marginTop: 40, flexShrink: 1}]}> 
+                    
+                      <Text style = {[styles.bigHeadText, {marginLeft: 10}]}>2023-2024: Centerstage</Text>
+                    
+                    <View style={{flex: 1,}}>
+                      <View style={styles.specialLittleBox}>
+                        <View style={{flex: 1, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Championship</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>March 3rd, 2024</Text>
+                        </View>
+                      </View>
+                      <View style={styles.littleBox}>
+                        <View style={{flex: 1, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #5</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance: 1st Team Selected</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Motivate Award 3rd Place</Text>
+                          
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>February 4th, 2024</Text>
+                        </View>
+                      </View>
+                      <View style={styles.littleBox}>
+                        <View style={{flex: 1, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #4</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award 2nd Place</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Connect Award 2nd Place</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Control Award 3rd Place</Text>
+                          
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>February 3rd, 2024</Text>
+                        </View>
+                      </View>
+                      <View style={styles.littleBox}>
+                        <View style={{flex: 1, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #3</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>January 14th, 2024</Text>
+                        </View>
+                      </View>
+                    </View>
           </View> 
+          <View style={[styles.bigBox, {marginTop: 40, flexShrink: 1}]}> 
+                    
+                    <Text style = {[styles.bigHeadText, {marginLeft: 10}]}>2022-2023: Power Play</Text>
+                    <View style={{flex: 1,}}>
+                      <View style={styles.specialLittleBox}>
+                        <View style={{flex: 1, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Championship</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>March 12th, 2023</Text>
+                        </View>
+                      </View>
+                      <View style={styles.littleBox}>
+                        <View style={{flex: 1, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #3</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance: 1st Team Selected</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Connect Award</Text>
+                          
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>January 29th, 2023</Text>
+                        </View>
+                      </View>
+                      <View style={styles.littleBox}>
+                        <View style={{flex: 1, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #2</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Finalist Alliance: Captain</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Control Award</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Design Award 3rd Place</Text>
+                          
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>January 15th, 2023</Text>
+                        </View>
+                      </View>
+                    </View>
+          </View>  
       </ScrollView>
       <BottomBar/>
     </SafeAreaView>
@@ -217,6 +297,19 @@ const styles = StyleSheet.create({
       marginLeft: 20, 
       marginBottom: 2 
   },
+  specialLittleBox: {
+    marginHorizontal: 5,
+    marginVertical: 10,
+    backgroundColor: pallete.accent,
+    borderColor: pallete.InnovoYellow,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 2,
+    justifyContent: 'space-between',
+    flexGrow: 1,
+    flexDirection: 'row'
+  },
 
   headerText: {
     fontSize: 25,
@@ -249,7 +342,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 2,
     justifyContent: 'space-between',
-    flexShrink: 1,
+    flexGrow: 1,
     flexDirection: 'row'
   },
 

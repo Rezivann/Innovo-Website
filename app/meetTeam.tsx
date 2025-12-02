@@ -120,7 +120,7 @@ export default function HomeScreen() {
         
       <TopBar/>
       {/* <ImageBackground source={bg} resizeMode="cover" style={{flex: 1, justifyContent: 'center',}}> */}
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground blurRadius={4} source={meetTeamPhoto} style={{height: height*.5, justifyContent: 'center'}}>
         <View style= {{flex: 1}}></View>
         <View style= {{padding: 0.5, alignItems: 'center', backgroundColor: '#a2a0127c',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
