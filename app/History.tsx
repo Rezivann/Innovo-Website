@@ -232,8 +232,8 @@ export default function HomeScreen() {
                       </View>
                     </View>
           </View>  
+          <BottomBar/>
       </ScrollView>
-      <BottomBar/>
     </SafeAreaView>
   );
 }

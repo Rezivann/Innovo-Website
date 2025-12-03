@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, } from 'react';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -11,8 +11,17 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Dimensions
+  Dimensions,
+  ImageSourcePropType, 
 } from 'react-native';
+
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import { renderItem } from "../assets/FilesforCarousel/render-item";
+import { useSharedValue } from "react-native-reanimated";
+import Carousel from "react-native-reanimated-carousel";
+ 
+
 import InnovoPFP from '../assets/images/InnovoLogo.png';
 import Insta from '../assets/images/InstaLogo.png';
 import TT from '../assets/images/TTLogo.png';
@@ -21,10 +30,17 @@ import InnovoWide from '../assets/images/InnovoWide.png';
 import InnovoWideNoLines from '../assets/images/InnovoWideNolines.png';
 
 
+
+import image1 from '../assets/images/Slideshow/Image1.jpg';
+import image2 from '../assets/images/Slideshow/Image2.jpg';
+import image3 from '../assets/images/Slideshow/Image3.jpg';
+import image4 from '../assets/images/Slideshow/Image4.jpg';
+import image5 from '../assets/images/Slideshow/Image5.png';
+
 import teamPhoto from '../assets/images/TeamPhoto.png';
 import NewMichael from '../assets/images/NewMichael.png';
 import Michael from '../assets/images/Michael.jpg';
-import { ImageBackground } from 'expo-image';
+import { ImageBackground, ImageProps } from 'expo-image';
 
 // #eeea09ff
 
@@ -98,6 +114,7 @@ export default function HomeScreen() {
   const statNums = statSet(width);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false}>
       <ImageBackground source={NewMichael} resizeMode="cover" style={{minHeight: height, flex: 1, justifyContent: 'center'}}>
@@ -164,8 +181,8 @@ export default function HomeScreen() {
               <View style={{ backgroundColor: pallete.InnovoYellow, width: 1}}></View>
 
               <View style={{paddingHorizontal: 30, flex: 2, alignItems: 'center'}}>
-                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>00</Text>
-                <Text style = {[styles.littleStat, {fontSize: statNums[1]}]}>Seasons played</Text>
+                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>8</Text>
+                <Text style = {[styles.littleStat, {fontSize: statNums[1]}]}>Countries Reached</Text>
               </View>
 
             </View>
@@ -179,9 +196,9 @@ export default function HomeScreen() {
             
       </View>
 
-        <View style={[styles.bigBox, {justifyContent: 'center', alignItems: 'center', alignSelf: 'center', marginTop: 40, paddingHorizontal: 30, paddingVertical: 30}]}>
-
-          <Image source={teamPhoto} style={{ height: width*0.5, width: width*0.57}}resizeMode="contain"/>
+        <View style={[styles.bigBox, {justifyContent: 'center', alignItems: 'center', alignSelf: 'center', marginTop: 40, paddingHorizontal: 10, paddingVertical: 20}]}>
+          <ImageSlideshow></ImageSlideshow>
+          {/* <Image source={teamPhoto} style={{ height: width*0.5, width: width*0.57}}resizeMode="contain"/> */}
         </View>
         
 
@@ -189,9 +206,121 @@ export default function HomeScreen() {
       
       <BottomBar/>
       </ScrollView>
+      </GestureHandlerRootView>
     </SafeAreaView>
   );
 }
+
+const images = [image1, image2, image3, image4, image5]
+
+// const ImageSlider = (images : ImageSourcePropType[]) => { 
+//   const [pageWidth, pageHeight] = useWindowSize();
+//   const Width = pageWidth*0.7;
+//   const Height = pageWidth*0.4;
+  
+//   const [active, setActive] = useState(0);
+
+//   const change = ({nativeEvent) => {
+//     const slide = Math.ceil(
+//       nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width,
+//     );
+
+//     if (slide !== active) {
+//       setActive(slide);
+//     }
+//   };
+
+
+//   return (
+  
+//   <View>
+//     <ScrollView 
+//       pagingEnabled
+//       horizontal
+//       onScroll={change}
+//       showsHorizontalScrollIndicator={false}
+//       style={{width: Width, height: Height}}>
+//         {images.map((image, index) => (
+//           <Image 
+//           key={index}
+//           source={image}
+//           style={{width: Width*0.9, height: Height*.9, resizeMode: 'cover'}}/>
+//         ))}
+//       </ScrollView>
+//       <View style={{flexDirection: 'row', position: 'absolute', bottom: -15, alignSelf: 'center'}}>
+//         {images.map((i, k) => (
+//           <Text key={k} style={k == active ? {color: '#FFF', fontSize: 50} : {color: '#888', fontSize:50}}>
+//             ⬤
+//           </Text>
+//         ))}
+//       </View>
+
+//   </View>
+  
+// );
+
+
+// }
+  
+
+// const { start: startAutoPlay, pause: pauseAutoPlay } = useAutoPlay({
+//   autoPlay: true,
+//   autoPlayInterval: 2000,
+//   carouselController,
+// });
+
+// const scrollViewGestureOnScrollStart = React.useCallback(() => {
+//   pauseAutoPlay();
+//   console.log("Scroll start");
+// }, [pauseAutoPlay]);
+
+// const scrollViewGestureOnScrollEnd = React.useCallback(() => {
+//   startAutoPlay();
+//   console.log("Scroll end");
+// }, [startAutoPlay]);
+
+function ImageSlideshow() {
+  const progress = useSharedValue<number>(0);
+  const [width, height] = useWindowSize();
+
+  return (
+    <View
+      id="carousel-component"
+      
+    >
+        <Carousel
+          autoPlayInterval={2000}
+          autoPlay={true}
+          data={images}
+          height={width*0.5}
+          loop={true}
+          pagingEnabled={false}
+          snapEnabled={true}
+          width={width === 0 ? 1 : width*0.8}
+          style={{
+            width: width
+          }}
+          mode='parallax'
+          modeConfig={{
+            parallaxScrollingScale: 0.9,
+            parallaxScrollingOffset: 50,
+          }}
+          onProgressChange={progress}
+          renderItem={renderItem({rounded: true, })}/>
+
+
+
+
+
+      </View>
+  )
+
+
+}
+
+
+
+
 
 export function BottomBar() {
   const router = useRouter();
