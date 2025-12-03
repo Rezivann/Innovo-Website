@@ -15,8 +15,6 @@ import {
   ImageSourcePropType, 
 } from 'react-native';
 
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-
 import { renderItem } from "../assets/FilesforCarousel/render-item";
 import { useSharedValue } from "react-native-reanimated";
 import Carousel from "react-native-reanimated-carousel";
@@ -114,7 +112,7 @@ export default function HomeScreen() {
   const statNums = statSet(width);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
+
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false}>
       <ImageBackground source={NewMichael} resizeMode="cover" style={{minHeight: height, flex: 1, justifyContent: 'center'}}>
@@ -206,7 +204,6 @@ export default function HomeScreen() {
       
       <BottomBar/>
       </ScrollView>
-      </GestureHandlerRootView>
     </SafeAreaView>
   );
 }
