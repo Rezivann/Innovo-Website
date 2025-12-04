@@ -5,23 +5,16 @@ import { motion } from 'framer-motion';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import {
-  Animated,
   Image,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  Dimensions,
-  Module,
   ImageSourcePropType,
-  Pressable,
-  Easing,
 } from 'react-native';
-import { Shadow } from 'react-native-shadow-2';
-import InnovoPFP from '../assets/images/InnovoLogo.png';
-import pfp from '../assets/images/DefaultAvatar.png';
+
+
 import meetTeamPhoto from '../assets/images/meetTeamPhoto.jpg';
 import Alessandra from '../assets/images/PFPs/Alessandra.png';
 import Darren from '../assets/images/PFPs/Darren.png';
@@ -39,21 +32,10 @@ import Shmuel from '../assets/images/PFPs/Shmuel.png';
 import Steve from '../assets/images/PFPs/Steve.png';
 import Winston from '../assets/images/PFPs/Winston.png';
 
-import bg from '../assets/images/websiteBg.png';
 
-import topBar, { TopBar } from './index';
-import bottomBar, { BottomBar } from './index';
-import { ZoomIn } from 'react-native-reanimated';
+import { TopBar, BottomBar, pallete } from './index';
 import { ImageBackground } from 'expo-image';
-import AnimatedComponent from 'react-native-reanimated/lib/typescript/createAnimatedComponent/AnimatedComponent';
-const pallete = {
-  InnovoYellow: '#eeea09ff',
-  dark: '#2c2c2cff',
-  black: '#000000',
-  bigBox: '#191919',
-  accent: '#141414',
-  bgColor: '#272727'
-}
+
 
 type Person = {
     name: string;
@@ -99,22 +81,11 @@ function useWindowSize() {
   return size;
 }
 
-
-
-
-
-
 export default function HomeScreen() {
   const router = useRouter();
   const [width, height] = useWindowSize();
 
   const makeSmall = Boolean(width < 800);
-
-    
-
-
-
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: pallete.bgColor }}>
         
@@ -124,7 +95,7 @@ export default function HomeScreen() {
         <ImageBackground blurRadius={4} source={meetTeamPhoto} style={{height: height*.5, justifyContent: 'center'}}>
         <View style= {{flex: 1}}></View>
         <View style= {{padding: 0.5, alignItems: 'center', backgroundColor: '#a2a0127c',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
-          <View style={[styles.bigBox, {marginHorizontal: 10, backgroundColor: '#000000',flexDirection: 'row', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, elevation: 20, }]}>
+          <View style={[styles.bigBox, {marginHorizontal: 10, backgroundColor: '#000000',flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', borderRadius: 40}]}>
                 <Text style={[styles.bigHeadText, {fontSize: 45}]}>Meet the Team</Text>
           </View>
         </View>
@@ -138,12 +109,11 @@ export default function HomeScreen() {
       <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>
 
 
-    {makeSmall ? (
-        buildTeam.map((member: Person) => (
-            <View  style={styles.idcardSmall}>
-                
-                <View style = {[styles.miniBox]}>
-                    <View style={styles.pfp}>
+    {buildTeam.map((member: Person) => (
+          <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
+              <View style={makeSmall ? styles.idcardSmall : styles.idcard}>
+                  <View style = {styles.miniBox}>
+                      <View style={styles.pfp}>
                         <Image source={member.image} style={styles.image}/>
                     </View>
                     <Text style={styles.pfpName}>{member.name}</Text>
@@ -151,99 +121,49 @@ export default function HomeScreen() {
                 <View style={{flexDirection: 'column-reverse',flex: 1}}> 
                     <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
                 </View>
-            </View>   
-
-    ))) : (
-
-        buildTeam.map((member: Person) => (
-        // <div className="container" onMouseOver={() => (handleEditZoom(member.name, true), makeBigger)}style={{}} onMouseLeave={() => (handleEditZoom(member.name, false), makeSmaller)}>
-        
-        
-                <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
-                    <View style={styles.idcard}>
-                        <View style = {styles.miniBox}>
-                            <View style={styles.pfp}>
-                                <Image source={member.image} style={styles.image}/>
-                            </View>
-                            <Text style={styles.pfpName}>{member.name}</Text>
-                        </View>
-                        <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                            <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-                        </View>
-                    </View>
-                </motion.button>
-    )))}
-    
+            </View>
+            </motion.button>
+      ))}
       </View>
       <View style={[styles.bigBox, {width: 230, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Coding Team: </Text>
       </View>
       <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>
-        {makeSmall ? (
-        codingTeam.map((member: Person) => (
-        <View style={styles.idcardSmall}>
-            <View style = {styles.miniBox}>
-                <View style={styles.pfp}>
-                    <Image source={member.image} style={styles.image}/>
-                </View>
-                <Text style={styles.pfpName}>{member.name}</Text>
-            </View>
-            <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-            </View>
-        </View>
-    ))) : (
-        codingTeam.map((member: Person) => (
-        
-        <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
-                    <View style={styles.idcard}>
-                        <View style = {styles.miniBox}>
-                            <View style={styles.pfp}>
-                                <Image source={member.image} style={styles.image}/>
-                            </View>
-                            <Text style={styles.pfpName}>{member.name}</Text>
-                        </View>
-                        <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                            <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-                        </View>
+        {codingTeam.map((member: Person) => (
+          <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
+              <View style={makeSmall ? styles.idcardSmall : styles.idcard}>
+                  <View style = {styles.miniBox}>
+                      <View style={styles.pfp}>
+                        <Image source={member.image} style={styles.image}/>
                     </View>
-                </motion.button>
-    )))}
+                    <Text style={styles.pfpName}>{member.name}</Text>
+                </View>
+                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
+                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                </View>
+            </View>
+            </motion.button>
+      ))}
       </View>
       <View style={[styles.bigBox, {width: 250, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Outreach Team: </Text>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', maxWidth: width, backgroundColor: pallete.bgColor}}>
-        {makeSmall ? (
-        outreachTeam.map((member: Person) => (
-        <View style={styles.idcardSmall}>
-            <View style = {styles.miniBox}>
-                <View style={styles.pfp}>
-                    <Image source={member.image} style={styles.image}/>
-                </View>
-                <Text style={styles.pfpName}>{member.name}</Text>
-            </View>
-            <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-            </View>
-        </View>
-    ))) : (
-        outreachTeam.map((member: Person) => (
-        
-        <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
-                    <View style={styles.idcard}>
-                        <View style = {styles.miniBox}>
-                            <View style={styles.pfp}>
-                                <Image source={member.image} style={styles.image}/>
-                            </View>
-                            <Text style={styles.pfpName}>{member.name}</Text>
-                        </View>
-                        <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                            <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
-                        </View>
+      <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>
+        {outreachTeam.map((member: Person) => (
+          <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
+              <View style={makeSmall ? styles.idcardSmall : styles.idcard}>
+                  <View style = {styles.miniBox}>
+                      <View style={styles.pfp}>
+                        <Image source={member.image} style={styles.image}/>
                     </View>
-        </motion.button>
-    )))}
+                    <Text style={styles.pfpName}>{member.name}</Text>
+                </View>
+                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
+                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                </View>
+            </View>
+            </motion.button>
+      ))}
 
       </View>
       <View style= {{height: 40}}></View>
@@ -255,16 +175,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  topbar: {
-    flexDirection: 'row',
-    backgroundColor: pallete.black,
-    padding: 20
-  },
-  titleText: {
-    fontSize: 20,
-    color: pallete.InnovoYellow,
-    fontWeight: "500"
-  },
   bigHeadText: {
       fontSize: 40, 
       fontWeight: '500', 
@@ -278,13 +188,6 @@ const styles = StyleSheet.create({
         borderWidth: 3, 
         borderColor: pallete.InnovoYellow
         
-  },
-  littleStat: {
-      fontSize: 25, 
-      fontWeight: '400', 
-      color: pallete.InnovoYellow, 
-      textAlign: 'center',
-      marginBottom: 4
   },
   leaderText: {
     fontSize: 21, 
@@ -315,10 +218,6 @@ const styles = StyleSheet.create({
     bottom: -90,
     left: -35,
     position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
   },
   bigBox: {
     marginHorizontal: 20,
@@ -384,7 +283,5 @@ const styles = StyleSheet.create({
     shadowColor: '#a2a0128d',
     shadowRadius: 4,
     elevation: 10
-    
   },
-
 });

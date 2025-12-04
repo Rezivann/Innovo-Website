@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import InnovoPFP from '../assets/images/InnovoLogo.png';
 
-import topBar, { TopBar } from './index';
+import topBar, { TopBar } from '../index';
 
 const pallete = {
   InnovoYellow: '#eeea09ff',
