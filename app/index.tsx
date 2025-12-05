@@ -49,7 +49,7 @@ export const pallete = {
   InnovoYellow: '#eeea09ff',
   black: '#000000',
   bigBox: '#191919',
-  accent: '#141414',
+  accent: '#101010ff',
   bgColor: '#272727'
 }
 
