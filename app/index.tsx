@@ -132,7 +132,7 @@ export default function HomeScreen() {
         <View style={[styles.bigBox, {flex: 1, width: width*0.9, flexDirection: 'row', alignSelf: 'center',marginVertical: 40}]}>
             <View style={{flex: 1, flexShrink: 1, justifyContent: 'center', padding: 20}}>
               <Text style = {[styles.bigHeadText, {alignSelf: 'flex-start'}]}>About us </Text>
-              <Text style = {[styles.subText, { fontSize: 22}]}>CHANGED HERE Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
+              <Text style = {[styles.subText, { fontSize: 22}]}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
               <View style={{flexShrink: 1, borderColor: pallete.InnovoYellow, borderWidth: 2, borderRadius: 40, marginTop: 20}}>
                 <Text style = {styles.quote}>"Dream big, build great, together we innovate!"</Text>
               </View>
