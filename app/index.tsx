@@ -150,7 +150,7 @@ export default function HomeScreen() {
 
       <View style={[styles.bigBox, {flexShrink: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingHorizontal: 30, marginBottom: 40}]}>
         <Text style = {styles.bigHeadText}>Contact us</Text>
-        <Text  style = {[styles.subText, {textAlign: 'center'}]}>Feel free to contact us for any reason!  You can reach us with our email or any of our social media below.</Text> 
+        <Text  style = {[styles.subText, {fontSize: 25, textAlign: 'center'}]}>Feel free to contact us for any reason!  You can reach us with our email or any of our social media below.</Text> 
 
         <Text style= {[styles.bigHeadText, {fontSize: extraSmall ? 20 : 30, marginTop: 20, fontWeight: '700'}]}>
           innovo912@gmail.com
