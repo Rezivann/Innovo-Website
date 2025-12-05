@@ -13,7 +13,7 @@ import type { AnimatedProps } from "react-native-reanimated";
 import Animated from "react-native-reanimated";
 
 import image1 from '../images/Slideshow/Image1.jpg';
-import image2 from '../images/Slideshow/Image2.jpg';
+import image2 from '../images/Slideshow/Image2.png';
 import image3 from '../images/Slideshow/Image3.jpg';
 import image4 from '../images/Slideshow/Image4.jpg';
 import image5 from '../images/Slideshow/Image5.png';

@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 import { renderItem } from "../assets/FilesforCarousel/render-item";
-import { useSharedValue } from "react-native-reanimated";
+import { useSharedValue, withDecay } from "react-native-reanimated";
 import Carousel from "react-native-reanimated-carousel";
  
 
@@ -35,7 +35,7 @@ import InnovoWide from '../assets/images/InnovoWide.png';
 
 
 import image1 from '../assets/images/Slideshow/Image1.jpg';
-import image2 from '../assets/images/Slideshow/Image2.jpg';
+import image2 from '../assets/images/Slideshow/Image2.png';
 import image3 from '../assets/images/Slideshow/Image3.jpg';
 import image4 from '../assets/images/Slideshow/Image4.jpg';
 import image5 from '../assets/images/Slideshow/Image5.png';
@@ -67,8 +67,8 @@ function useWindowSize() {
 }
 
 const statSet = (width: number) => {
-  if (width < 800) {
-    return [45, 15];
+  if (width < 700) {
+    return [47, 12];
   }
   else {
     return [100, 25];
@@ -76,8 +76,12 @@ const statSet = (width: number) => {
 };
 
 const titleSet = (width: number) => {
-  if (width < 800) {
-    return [14, 9];
+  if (width < 370) {
+      return [10, 14];
+    }
+    
+  else if (width < 800){ 
+      return [14, 9];
   }
   else {
     return [20, 30];
@@ -92,6 +96,7 @@ export default function HomeScreen() {
   const statNums = statSet(width);
   const makeSmall = Boolean(width < 800);
   const aboutUsSmall = Boolean(width < 1164);
+  const extraSmall = Boolean(width < 400);
 
   
   return (
@@ -104,7 +109,7 @@ export default function HomeScreen() {
         <View style={{flex: 1}}></View>
         <View style= {{marginBottom: height*.1,padding: 0.5, alignItems: 'center', backgroundColor: '#a2a0127c',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
           <View style={[styles.bigBox, {marginHorizontal: 10, backgroundColor: '#000000',flexDirection: 'row', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, elevation: 20, }]}>
-                <Image source={InnovoWide} style={{height: width*.17, width: width*.4}}resizeMode="contain"/>
+                <Image source={InnovoWide} style={{height: makeSmall ? width*.34 : width*.17, width: makeSmall ? width*.7 : width*.4}}resizeMode="contain"/>
           </View>
           
         </View>
@@ -147,23 +152,23 @@ export default function HomeScreen() {
         <Text style = {styles.bigHeadText}>Contact us</Text>
         <Text  style = {[styles.subText, {textAlign: 'center'}]}>Feel free to contact us for any reason!  You can reach us with our email or any of our social media below.</Text> 
 
-        <Text style= {[styles.bigHeadText, {fontSize: 30, marginTop: 20, fontWeight: '700'}]}>
+        <Text style= {[styles.bigHeadText, {fontSize: extraSmall ? 20 : 30, marginTop: 20, fontWeight: '700'}]}>
           innovo912@gmail.com
         </Text>
         <View style={{flexDirection: 'row', justifyContent: 'space-between',alignItems: 'stretch', alignSelf: 'stretch',flex: 1, marginTop: 30, marginBottom: 15}}>
-          <View style={{flex: 2}}></View>
+          <View style={{flex: extraSmall ? 1.5 : 2}}></View>
           <TouchableOpacity onPress={() => router.push("https://www.instagram.com/innovo5477/")}>
-            <Image source={InstaHome} style={{width: 50, height: 50}}resizeMode="contain"/>
+            <Image source={InstaHome} style={{width: 55, height: 55}}resizeMode="contain"/>
           </TouchableOpacity>
           <View style={{flex: 1}}></View>
           <TouchableOpacity onPress={() => router.push("https://www.tiktok.com/@innovo5477")}>
-            <Image source={TTHome} style={{width: 50, height: 50}}resizeMode="contain"/>
+            <Image source={TTHome} style={{width: 55, height: 55}}resizeMode="contain"/>
           </TouchableOpacity>
           <View style={{flex: 1}}></View>
           <TouchableOpacity onPress={() => router.push("https://www.youtube.com/@RoboticsInnovo5477")}>
-            <Image source={YoutubeHome} style={{width: 50, height: 50}}resizeMode="contain"/>
+            <Image source={YoutubeHome} style={{width: 55, height: 55}}resizeMode="contain"/>
           </TouchableOpacity>  
-          <View style={{flex: 2}}></View>
+          <View style={{flex: extraSmall ? 1.5 : 2}}></View>
         </View>
       </View>
       
@@ -199,6 +204,8 @@ export function ImageSlideshow() {
           data={images}
           height={makeSmall ? width*0.85 : width*0.4}
           loop={true}
+          maxScrollDistancePerSwipe={makeSmall ? width*0.85 : width*0.55} 
+          minScrollDistancePerSwipe={10} 
           pagingEnabled={false}
           snapEnabled={true}
           width={makeSmall ? width*0.85 : width*0.55}
@@ -206,7 +213,7 @@ export function ImageSlideshow() {
           mode='parallax'
           modeConfig={{
             parallaxScrollingScale: 0.9,
-            parallaxScrollingOffset: makeSmall ? 30 : -300,
+            parallaxScrollingOffset: makeSmall ? 20 : -300,
           }}
           onProgressChange={progress}
           renderItem={renderItem({rounded: true})}/>
@@ -226,16 +233,16 @@ export function BottomBar() {
   return (
     <View style={[styles.topbar, {height:75, alignItems: 'center', gap: 7,justifyContent: 'center',flexDirection: 'row'}]}>
         <TouchableOpacity onPress={() => router.push("https://www.instagram.com/innovo5477/")}>
-          <Image source={Insta} style={{width: 30, height: 30}}resizeMode="contain"/>
+          <Image source={Insta} style={{width: 35, height: 35}}resizeMode="contain"/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push("https://www.tiktok.com/@innovo5477")}>
-          <Image source={TT} style={{width: 30, height: 30}}resizeMode="contain"/>
+          <Image source={TT} style={{width: 35, height: 35}}resizeMode="contain"/>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push("https://www.youtube.com/@RoboticsInnovo5477")}>
-          <Image source={Youtube} style={{width: 30, height: 30}}resizeMode="contain"/>
+          <Image source={Youtube} style={{width: 35, height: 35}}resizeMode="contain"/>
         </TouchableOpacity>
         {/*<TouchableOpacity onPress={() => router.push("/")}>*/}
-          <Text style={{fontSize: 20, fontWeight: '200', marginLeft: 4, color: pallete.InnovoYellow}}>innovo912@gmail.com</Text>
+          <Text style={{fontSize: 21, fontWeight: '200', marginLeft: 4, color: pallete.InnovoYellow}}>innovo912@gmail.com</Text>
         {/*</TouchableOpacity>*/}
     </View>
   );
@@ -245,11 +252,12 @@ export function BottomBar() {
 function StatsBar() {
   const [width, height] = useWindowSize();
   const statNums = statSet(width);
+  const makeSmall = Boolean(width< 800)
 
   return(
-      <View style= {{flexDirection: 'row', justifyContent: 'space-evenly', marginVertical: 30, marginHorizontal: 20}}>
-        
-          <View style={[styles.bigBox, {flex: 1 , alignItems: 'stretch'}]}>
+       <View style= {{flexDirection: 'row', justifyContent: 'space-evenly', marginVertical: 30, paddingHorizontal: makeSmall ? 0 : 0, marginHorizontal: 1}}>
+
+          <View style={[styles.bigBox, {flex: 1 , alignItems: 'stretch', maxWidth: width*0.9}]}>
             <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-evenly', paddingBottom: 20}}>
               <View style={{paddingHorizontal: 30, alignItems: 'center', flex: 2}}>
                 <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>14</Text>
