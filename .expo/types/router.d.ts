@@ -1,0 +1,14 @@
+/* eslint-disable */
+import * as Router from 'expo-router';
+
+export * from 'expo-router';
+
+declare module 'expo-router' {
+  export namespace ExpoRouter {
+    export interface __routes<T extends string | object = string> {
+      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/History`; params?: Router.UnknownInputParams; } | { pathname: `/`; params?: Router.UnknownInputParams; } | { pathname: `/meetTeam`; params?: Router.UnknownInputParams; } | { pathname: `/Sponsors`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `/UnusedFiles/Events`; params?: Router.UnknownInputParams; } | { pathname: `/UnusedFiles/explore`; params?: Router.UnknownInputParams; } | { pathname: `/UnusedFiles/modal`; params?: Router.UnknownInputParams; };
+      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/History`; params?: Router.UnknownOutputParams; } | { pathname: `/`; params?: Router.UnknownOutputParams; } | { pathname: `/meetTeam`; params?: Router.UnknownOutputParams; } | { pathname: `/Sponsors`; params?: Router.UnknownOutputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `/UnusedFiles/Events`; params?: Router.UnknownOutputParams; } | { pathname: `/UnusedFiles/explore`; params?: Router.UnknownOutputParams; } | { pathname: `/UnusedFiles/modal`; params?: Router.UnknownOutputParams; };
+      href: Router.RelativePathString | Router.ExternalPathString | `/History${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | `/meetTeam${`?${string}` | `#${string}` | ''}` | `/Sponsors${`?${string}` | `#${string}` | ''}` | `/_sitemap${`?${string}` | `#${string}` | ''}` | `/UnusedFiles/Events${`?${string}` | `#${string}` | ''}` | `/UnusedFiles/explore${`?${string}` | `#${string}` | ''}` | `/UnusedFiles/modal${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/History`; params?: Router.UnknownInputParams; } | { pathname: `/`; params?: Router.UnknownInputParams; } | { pathname: `/meetTeam`; params?: Router.UnknownInputParams; } | { pathname: `/Sponsors`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `/UnusedFiles/Events`; params?: Router.UnknownInputParams; } | { pathname: `/UnusedFiles/explore`; params?: Router.UnknownInputParams; } | { pathname: `/UnusedFiles/modal`; params?: Router.UnknownInputParams; };
+    }
+  }
+}
