@@ -55,10 +55,10 @@ export default function RootLayout() {
         }}
       > 
       
-      <Stack.Screen name='' options={{ title: "Innovo" }}/> 
+      {/* <Stack.Screen name='index' options={{ title: 'App', headerShown: false }}/> 
       <Stack.Screen name='History' options={{ title: "History - Innovo" }}/> 
       <Stack.Screen name='Sponsors' options={{ title: "Sponsors - Innovo" }}/>
-      <Stack.Screen name='meetTeam' options={{ title: "Meet the Team - Innovo" }}/> 
+      <Stack.Screen name='meetTeam' options={{ title: "Meet the Team - Innovo" }}/>  */}
 
       
       
