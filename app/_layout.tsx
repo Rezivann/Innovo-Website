@@ -53,7 +53,18 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: '#303030ff' },
           
         }}
-      > <Stack.Screen name='index' options={{ title: "Example Title" }}/> </Stack>
+      > 
+      
+      <Stack.Screen name='' options={{ title: "Innovo" }}/> 
+      <Stack.Screen name='History' options={{ title: "History - Innovo" }}/> 
+      <Stack.Screen name='Sponsors' options={{ title: "Sponsors - Innovo" }}/>
+      <Stack.Screen name='meetTeam' options={{ title: "Meet the Team - Innovo" }}/> 
+
+      
+      
+      </Stack>
+      
+
     </ThemeProvider>
 
   );
