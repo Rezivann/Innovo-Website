@@ -54,6 +54,7 @@ import teamPhoto from '../assets/images/TeamPhoto.png';
 import NewMichael from '../assets/images/NewMichaelV2.png';
 import Michael from '../assets/images/Michael.jpg';
 import { ImageBackground, ImageProps } from 'expo-image';
+import { scale } from 'framer-motion';
 
 export const pallete = {
   InnovoYellow: '#eeea09ff',
@@ -329,14 +330,14 @@ export function TopBar() {
                 <Image source={InnovoWide} style={{marginTop: 5, width: 125, height: 50}}resizeMode="contain"/>
           </View>
         </TouchableOpacity>  
-        <View style={{alignItems: 'center', flexDirection: 'row-reverse', }}>
-          <TouchableOpacity onPress={() => router.push("/meetTeam")}>
-            <Text style={[styles.headerText, {fontSize: titleFonts[0], paddingLeft: titleFonts[1]}]}>Meet the Team</Text>
+        <View style={{alignItems: 'center', flexDirection: 'row-reverse'}}>
+          <TouchableOpacity style={styles.topBarButton} onPress={() => router.push("/meetTeam")}>
+            <Text style={[styles.headerText, {fontSize: titleFonts[0], paddingLeft: titleFonts[1]}, ]}>Meet the Team</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push("/Sponsors")}>
+          <TouchableOpacity style={styles.topBarButton} onPress={() => router.push("/Sponsors")}>
             <Text style={[styles.headerText, {fontSize: titleFonts[0], paddingLeft: titleFonts[1]}]}>Sponsors</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.push("/History")}>
+          <TouchableOpacity style={styles.topBarButton} onPress={() => router.push("/History")}>
             <Text style={[styles.headerText, {fontSize: titleFonts[0], paddingLeft: titleFonts[1]}]}>History</Text>
           </TouchableOpacity>
         </View>
@@ -354,6 +355,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: pallete.black,
     padding: 20
+  },
+  topBarButton : {
+    height: 50, 
+    justifyContent: 'center'
   },
   titleText: {
     fontFamily: 'Barlow_400Regular',
