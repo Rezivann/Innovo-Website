@@ -4,6 +4,15 @@ import { motion } from 'framer-motion';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { useFonts } from '@expo-google-fonts/barlow/useFonts';
+
+import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
+
+import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
+
+
+
+
 import {
   Image,
   SafeAreaView,
@@ -86,6 +95,15 @@ export default function HomeScreen() {
   const [width, height] = useWindowSize();
 
   const makeSmall = Boolean(width < 800);
+
+  let [fontsLoaded] = useFonts({
+        Barlow_400Regular,
+        LeagueSpartan_400Regular
+    })
+
+    if (!fontsLoaded) {
+        return null;
+    }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: pallete.bgColor }}>
         
@@ -119,7 +137,7 @@ export default function HomeScreen() {
                     <Text style={styles.pfpName}>{member.name}</Text>
                 </View>
                 <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                    <Text style={styles.leaderText}>{member.specialrole}</Text>
                 </View>
             </View>
             </motion.button>
@@ -139,7 +157,7 @@ export default function HomeScreen() {
                     <Text style={styles.pfpName}>{member.name}</Text>
                 </View>
                 <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                    <Text style={styles.leaderText}>{member.specialrole}</Text>
                 </View>
             </View>
             </motion.button>
@@ -159,7 +177,7 @@ export default function HomeScreen() {
                     <Text style={styles.pfpName}>{member.name}</Text>
                 </View>
                 <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={[styles.leaderText, {fontSize: 17.5}]}>{member.specialrole}</Text>
+                    <Text style={styles.leaderText}>{member.specialrole}</Text>
                 </View>
             </View>
             </motion.button>
@@ -176,8 +194,9 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   bigHeadText: {
+      fontFamily: 'Barlow_400Regular',
       fontSize: 40, 
-      fontWeight: '500', 
+      fontWeight: '700', 
       color: pallete.InnovoYellow, 
       marginBottom: 8 
   },
@@ -190,7 +209,8 @@ const styles = StyleSheet.create({
         
   },
   leaderText: {
-    fontSize: 21, 
+    fontFamily: 'LeagueSpartan_400Regular',
+    fontSize: 20, 
     fontWeight: '500',
     marginLeft: 20, 
     color: pallete.InnovoYellow,
@@ -200,7 +220,8 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end'
   },
   subText: {
-      fontSize: 20, 
+      fontFamily: 'Barlow_400Regular',
+      fontSize: 22, 
       fontWeight: '200', 
       color: pallete.InnovoYellow,
       paddingRight:20, 
@@ -259,8 +280,9 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   pfpName: {
+    fontFamily: 'Barlow_400Regular',
     fontSize: 25, 
-    fontWeight: '400',
+    fontWeight: '500',
     marginLeft: 20, 
     color: pallete.InnovoYellow,
     paddingRight:20, 

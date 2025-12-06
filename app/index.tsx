@@ -3,6 +3,10 @@ import React, { useLayoutEffect, useState, } from 'react';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
+
+
+
+
 import {
   Image,
   SafeAreaView,
@@ -18,6 +22,12 @@ import {
 import { renderItem } from "../assets/FilesforCarousel/render-item";
 import { useSharedValue, withDecay } from "react-native-reanimated";
 import Carousel from "react-native-reanimated-carousel";
+
+import { useFonts } from '@expo-google-fonts/barlow/useFonts';
+
+import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
+
+import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
  
 
 
@@ -41,7 +51,7 @@ import image4 from '../assets/images/Slideshow/Image4.jpg';
 import image5 from '../assets/images/Slideshow/Image5.png';
 
 import teamPhoto from '../assets/images/TeamPhoto.png';
-import NewMichael from '../assets/images/NewMichael.png';
+import NewMichael from '../assets/images/NewMichaelV2.png';
 import Michael from '../assets/images/Michael.jpg';
 import { ImageBackground, ImageProps } from 'expo-image';
 
@@ -49,7 +59,7 @@ export const pallete = {
   InnovoYellow: '#eeea09ff',
   black: '#000000',
   bigBox: '#191919',
-  accent: '#101010ff',
+  accent: '#070707ff',
   bgColor: '#272727'
 }
 
@@ -71,7 +81,7 @@ const statSet = (width: number) => {
     return [47, 12];
   }
   else {
-    return [100, 25];
+    return [120, 30];
   }
 };
 
@@ -84,7 +94,7 @@ const titleSet = (width: number) => {
       return [14, 9];
   }
   else {
-    return [20, 30];
+    return [23, 30];
   }
   
 };
@@ -98,7 +108,14 @@ export default function HomeScreen() {
   const aboutUsSmall = Boolean(width < 1164);
   const extraSmall = Boolean(width < 400);
 
+  let [fontsLoaded] = useFonts({
+    Barlow_400Regular,
+    LeagueSpartan_400Regular
+    })
   
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
@@ -113,6 +130,7 @@ export default function HomeScreen() {
           </View>
           
         </View>
+        <View style={{flex: 0}}></View>
         <View style={{flex: 1, flexDirection: 'column-reverse',}}>
               <LinearGradient colors={['#27272700', '#272727']} style={{height: 150, width: width}} />
         </View>
@@ -122,18 +140,18 @@ export default function HomeScreen() {
       {aboutUsSmall ? (
         <View style={[styles.bigBox, {flexGrow: 1, width: width*0.9, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', marginVertical: 8 }]}>
             <Text style = {styles.bigHeadText}>About us</Text>
-            <Text  style = {[styles.subText, {textAlign: 'center'}]}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
+            <Text  style = {[styles.subText, {textAlign: 'center', paddingRight: 0}]}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
             <View style={{flexGrow: 1, borderColor: pallete.InnovoYellow, borderWidth: 2, borderRadius: 40, marginTop: 20}}>
                 <Text style = {[styles.quote, {fontSize: 30, padding:10}]}>"Dream big, build great, together we innovate!"</Text>
             </View>
             <ImageSlideshow/>
         </View>
       ) : (
-        <View style={[styles.bigBox, {flex: 1, width: width*0.9, flexDirection: 'row', alignSelf: 'center',marginVertical: 40}]}>
+        <View style={[styles.bigBox, {flexGrow: 1, width: width*0.9, flexDirection: 'row', alignSelf: 'center',marginVertical: 40}]}>
             <View style={{flex: 1, flexShrink: 1, justifyContent: 'center', padding: 20}}>
-              <Text style = {[styles.bigHeadText, {alignSelf: 'flex-start'}]}>About us </Text>
-              <Text style = {[styles.subText, { fontSize: 22}]}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
-              <View style={{flexShrink: 1, borderColor: pallete.InnovoYellow, borderWidth: 2, borderRadius: 40, marginTop: 20}}>
+              <Text style = {[styles.bigHeadText, {alignSelf: 'flex-start', fontFamily: 'Barlow_400Regular'}]}>About us </Text>
+              <Text style = {[styles.subText, { fontSize: 24, fontFamily: 'Barlow_400Regular', }]}>Hello! We are First Tech Challenge Team 5477 Innovo, based in George W. Hewlett High School, New York.  We are committed to upholding our core value, innovation, in everything we do.  From constantly revising our design of our robot, to integrating new control structures in its software, we innovate our robot to overcome the challenges we are faced with.  We also work to shine bright and illuminate our communities with the wonders of STEM in the hopes that they too can innovate themselves.  </Text>
+              <View style={{borderColor: pallete.InnovoYellow, borderWidth: 2, borderRadius: 40, marginTop: 20}}>
                 <Text style = {styles.quote}>"Dream big, build great, together we innovate!"</Text>
               </View>
               
@@ -150,9 +168,9 @@ export default function HomeScreen() {
 
       <View style={[styles.bigBox, {flexShrink: 1, justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingHorizontal: 30, marginBottom: 40}]}>
         <Text style = {styles.bigHeadText}>Contact us</Text>
-        <Text  style = {[styles.subText, {fontSize: 25, textAlign: 'center'}]}>Feel free to contact us for any reason!  You can reach us with our email or any of our social media below.</Text> 
+        <Text  style = {[styles.subText, {fontSize: 27, textAlign: 'center', marginTop: 10}]}>Feel free to contact us for any reason!  You can reach us with our email or any of our social media below.</Text> 
 
-        <Text style= {[styles.bigHeadText, {fontSize: extraSmall ? 20 : 30, marginTop: 20, fontWeight: '700'}]}>
+        <Text style= {[styles.bigHeadText, {fontSize: extraSmall ? 20 : 35, marginTop: 20, fontWeight: '700'}]}>
           innovo912@gmail.com
         </Text>
         <View style={{flexDirection: 'row', justifyContent: 'space-between',alignItems: 'stretch', alignSelf: 'stretch',flex: 1, marginTop: 30, marginBottom: 15}}>
@@ -242,7 +260,7 @@ export function BottomBar() {
           <Image source={Youtube} style={{width: 35, height: 35}}resizeMode="contain"/>
         </TouchableOpacity>
         {/*<TouchableOpacity onPress={() => router.push("/")}>*/}
-          <Text style={{fontSize: 21, fontWeight: '200', marginLeft: 4, color: pallete.InnovoYellow}}>innovo912@gmail.com</Text>
+          <Text style={{fontSize: 21, fontWeight: '200', marginLeft: 4, color: pallete.InnovoYellow, fontFamily: 'LeagueSpartan_400Regular'}}>innovo912@gmail.com</Text>
         {/*</TouchableOpacity>*/}
     </View>
   );
@@ -338,12 +356,14 @@ const styles = StyleSheet.create({
     padding: 20
   },
   titleText: {
+    fontFamily: 'Barlow_400Regular',
     fontSize: 20,
     color: pallete.InnovoYellow,
     fontWeight: "500"
   },
   bigHeadText: {
       fontSize: 50, 
+      fontFamily: 'Barlow_400Regular',
       fontWeight: '500', 
       color: pallete.InnovoYellow, 
       marginBottom: 8 , 
@@ -352,6 +372,7 @@ const styles = StyleSheet.create({
   },
 
   bigStat: {
+    fontFamily: 'Barlow_400Regular',
       fontSize: 50, 
       fontWeight: '700', 
       color: pallete.InnovoYellow, 
@@ -359,6 +380,7 @@ const styles = StyleSheet.create({
       marginBottom: 0 
   },
   littleStat: {
+    fontFamily: 'Barlow_400Regular',
       fontSize: 25, 
       fontWeight: '400', 
       color: pallete.InnovoYellow, 
@@ -366,14 +388,15 @@ const styles = StyleSheet.create({
       marginBottom: 4
   },
   subText: {
-      fontSize: 20, 
+      fontFamily: 'LeagueSpartan_400Regular',
+      fontSize: 22, 
       fontWeight: '300', 
       color: pallete.InnovoYellow,
-      paddingRight:20, 
       marginBottom: 2,
   },
 
   headerText: {
+    fontFamily: 'LeagueSpartan_400Regular',
     fontSize: 20,
     color: pallete.InnovoYellow,
     fontWeight: "500",
@@ -397,8 +420,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   quote: {
-    fontSize: 50, 
-    fontWeight: '500', 
+    fontFamily: 'Barlow_400Regular',
+    fontSize: 45,
+    fontWeight: '300', 
     color: pallete.InnovoYellow, 
     padding: 20,
     flex: 1,

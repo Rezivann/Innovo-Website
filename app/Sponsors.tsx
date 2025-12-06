@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { useFonts } from '@expo-google-fonts/barlow/useFonts';
+
+import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
+
+import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
+
 import {
   Animated,
   Image,
@@ -65,6 +71,15 @@ export default function HomeScreen() {
 
   const makeSmall = Boolean(width < 800);
 
+  let [fontsLoaded] = useFonts({
+    Barlow_400Regular,
+    LeagueSpartan_400Regular
+    })
+  
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
       <TopBar/>
@@ -108,7 +123,8 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   bigHeadText: {
-      fontWeight: '500', 
+      fontFamily: 'Barlow_400Regular',
+      fontWeight: '700', 
       color: pallete.InnovoYellow, 
       marginBottom: 8,
       fontSize: 40, 
@@ -116,15 +132,17 @@ const styles = StyleSheet.create({
   },
 
   subText: {
-      fontSize: 20, 
+      fontFamily: 'LeagueSpartan_400Regular',
+      fontSize: 25, 
       fontWeight: '200', 
       color: pallete.InnovoYellow,
       paddingRight:20, 
-      marginBottom: 2 
+      marginVertical: 2 
   },
 
   headerText: {
-    fontSize: 25,
+    fontFamily: 'LeagueSpartan_400Regular',
+    fontSize: 30,
     color: pallete.InnovoYellow,
     fontWeight: "500",
     textAlign: 'center'
