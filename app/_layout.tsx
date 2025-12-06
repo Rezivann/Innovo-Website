@@ -51,8 +51,9 @@ export default function RootLayout() {
           headerShown: false,
           // also set default background so iOS push animations match
           contentStyle: { backgroundColor: '#303030ff' },
+          
         }}
-      />
+      > <Stack.Screen name='index' options={{ title: "Example Title" }}/> </Stack>
     </ThemeProvider>
 
   );
