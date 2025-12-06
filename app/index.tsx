@@ -120,7 +120,7 @@ export default function HomeScreen() {
   return (
     
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
-      <title>Home - Innovo</title>
+      <title>Home</title>
       
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false}>

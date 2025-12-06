@@ -106,7 +106,7 @@ export default function HomeScreen() {
     }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: pallete.bgColor }}>
-        
+      <title>Meet the Team</title>
       <TopBar/>
       {/* <ImageBackground source={bg} resizeMode="cover" style={{flex: 1, justifyContent: 'center',}}> */}
       <ScrollView showsVerticalScrollIndicator={false}>

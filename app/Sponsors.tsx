@@ -82,6 +82,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
+      <title>Sponsors</title>
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false}>
        <ImageBackground blurRadius={0} source={circuitBg} resizeMode='cover'  style={{height: height*.5, width: width, justifyContent: 'center'}}>
