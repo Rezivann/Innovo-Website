@@ -8,6 +8,7 @@ import { useFonts } from '@expo-google-fonts/barlow/useFonts';
 import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
 
 import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
+import { Analytics } from "@vercel/analytics/next";
 
 
 import {
@@ -68,6 +69,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
       <title>History</title>
+      <Analytics/>
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground blurRadius={5} source={displayImage} resizeMode='cover'  style={{height: height*.5, width: width, justifyContent: 'center'}}>

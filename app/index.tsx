@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useState, } from 'react';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { Analytics } from "@vercel/analytics/next";
 
 
 
@@ -121,7 +122,7 @@ export default function HomeScreen() {
     
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
       <title>Home</title>
-      
+      <Analytics/>
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false}>
       <ImageBackground source={NewMichael} resizeMode="cover" style={{minHeight: height, flex: 1, justifyContent: 'center'}}>

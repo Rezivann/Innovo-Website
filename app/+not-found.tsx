@@ -5,6 +5,9 @@ import {pallete } from './index';
 
 import frownImage from '../assets/images/SiteNotFound.png';
 
+import { Analytics } from "@vercel/analytics/next";
+
+
 import {
   Image,
   SafeAreaView,
@@ -52,6 +55,7 @@ function returnToHome() {
       }
     return (
         <View style={{flex:1}}>
+          <Analytics/>
             <View style={{flex: 2}}></View>
             
             <View style={styles.bigBox}>

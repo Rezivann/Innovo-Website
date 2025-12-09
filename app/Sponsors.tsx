@@ -10,6 +10,9 @@ import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
 
 import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
 
+import { Analytics } from "@vercel/analytics/next";
+
+
 import {
   Animated,
   Image,
@@ -83,6 +86,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
       <title>Sponsors</title>
+      <Analytics/>
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
        <ImageBackground blurRadius={0} source={circuitBg} resizeMode='cover'  style={{height: height*.5, width: width, justifyContent: 'center'}}>
