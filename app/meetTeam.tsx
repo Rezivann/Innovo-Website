@@ -10,7 +10,7 @@ import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
 
 import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
 
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 
 

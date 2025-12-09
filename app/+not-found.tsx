@@ -5,7 +5,7 @@ import {pallete } from './index';
 
 import frownImage from '../assets/images/SiteNotFound.png';
 
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 
 import {

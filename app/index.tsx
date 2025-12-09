@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useState, } from 'react';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 
 
