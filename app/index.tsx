@@ -287,7 +287,7 @@ function StatsBar() {
               <View style={{ backgroundColor: pallete.InnovoYellow, width: 1}}></View>
 
               <View style={{paddingHorizontal: 30, alignItems: 'center', flex: 2}}>
-                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>16</Text>
+                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>18</Text>
                 <Text style = {[styles.littleStat, {fontSize: statNums[1]}]}>Awards won since 2022</Text>
               </View>
 
