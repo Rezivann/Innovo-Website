@@ -126,7 +126,8 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: 'center'
+    alignSelf: 'center',
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
 
 
   },

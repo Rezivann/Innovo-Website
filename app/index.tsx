@@ -30,7 +30,7 @@ import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
 
 import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
  
-
+import {motion} from 'framer-motion';
 
 import Insta from '../assets/images/InstaLogo.png';
 import TT from '../assets/images/TTLogo.png';
@@ -41,7 +41,8 @@ import TTHome from '../assets/images/TTLogoHome.png';
 import YoutubeHome from '../assets/images/YTLogoHome.png';
 
 import InnovoWide from '../assets/images/InnovoWide.png';
-
+ 
+import ExpandBar from '../assets/images/Expand.png';
 
 
 
@@ -87,19 +88,19 @@ const statSet = (width: number) => {
   }
 };
 
-const titleSet = (width: number) => {
-  if (width < 370) {
-      return [10, 14];
-    }
+// const titleSet = (width: number) => {
+//   if (width < 370) {
+//       return [10, 14];
+//     }
     
-  else if (width < 800){ 
-      return [14, 9];
-  }
-  else {
-    return [23, 30];
-  }
+//   else if (width < 800){ 
+//       return [14, 9];
+//   }
+//   else {
+//     return [23, 30];
+//   }
   
-};
+// };
 
 
 export default function HomeScreen() {
@@ -178,17 +179,27 @@ export default function HomeScreen() {
         </Text>
         <View style={{flexDirection: 'row', justifyContent: 'space-between',alignItems: 'stretch', alignSelf: 'stretch',flex: 1, marginTop: 30, marginBottom: 15}}>
           <View style={{flex: extraSmall ? 1.5 : 2}}></View>
-          <TouchableOpacity onPress={() => router.push("https://www.instagram.com/innovo5477/")}>
+
+          {/* <motion.view style={{marginTop: 5, height: 50, alignContent: 'center ',justifyContent: 'center', cursor: 'pointer',}} onClick={() => router.push("/meetTeam")} onHoverStart={() => (setMeet(true))} onHoverEnd={() => (setMeet(false))}>
+            <Text style={[styles.headerText, {fontSize: titleFonts[0]}]}>Meet the Team</Text>
+            {showMeet && (
+              <View style={{paddingTop: 0}}>
+              <motion.view layout transition={{layout: {duration: 1, type: "spring"}}} style={{originX: 0, height: 2, marginTop: -2, backgroundColor: pallete.InnovoYellow}} initial={{scaleX: 0}} animate={{scaleX: 1}} ></motion.view>
+              </View>
+            )}
+            
+          </motion.view> */}
+          <motion.view style={styles.socialMedia} onClick={() => router.push("https://www.instagram.com/innovo5477/")} whileHover={{scale: 1.1}}>
             <Image source={InstaHome} style={{width: 55, height: 55}}resizeMode="contain"/>
-          </TouchableOpacity>
+          </motion.view>
           <View style={{flex: 1}}></View>
-          <TouchableOpacity onPress={() => router.push("https://www.tiktok.com/@innovo5477")}>
+          <motion.view  style={styles.socialMedia}  onClick={() => router.push("https://www.tiktok.com/@innovo5477")} whileHover={{scale: 1.1}}>
             <Image source={TTHome} style={{width: 55, height: 55}}resizeMode="contain"/>
-          </TouchableOpacity>
+          </motion.view>
           <View style={{flex: 1}}></View>
-          <TouchableOpacity onPress={() => router.push("https://www.youtube.com/@RoboticsInnovo5477")}>
+          <motion.view  style={styles.socialMedia} onClick={() => router.push("https://www.youtube.com/@RoboticsInnovo5477")} whileHover={{scale: 1.1}}>
             <Image source={YoutubeHome} style={{width: 55, height: 55}}resizeMode="contain"/>
-          </TouchableOpacity>  
+          </motion.view>  
           <View style={{flex: extraSmall ? 1.5 : 2}}></View>
         </View>
       </View>
@@ -250,21 +261,26 @@ export function ImageSlideshow() {
 
 export function BottomBar() {
   const router = useRouter();
-
+  const [width, height] = useWindowSize();
+  const extraSmall = Boolean(width < 400);
   return (
-    <View style={[styles.topbar, {height:75, alignItems: 'center', gap: 7,justifyContent: 'center',flexDirection: 'row'}]}>
-        <TouchableOpacity onPress={() => router.push("https://www.instagram.com/innovo5477/")}>
-          <Image source={Insta} style={{width: 35, height: 35}}resizeMode="contain"/>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("https://www.tiktok.com/@innovo5477")}>
-          <Image source={TT} style={{width: 35, height: 35}}resizeMode="contain"/>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("https://www.youtube.com/@RoboticsInnovo5477")}>
-          <Image source={Youtube} style={{width: 35, height: 35}}resizeMode="contain"/>
-        </TouchableOpacity>
-        {/*<TouchableOpacity onPress={() => router.push("/")}>*/}
+    <View style={[styles.topbar, {height:90, justifyContent: 'center'}]}>
+      <View style={{alignSelf: 'center', flexDirection: 'row', justifyContent: 'center', gap: extraSmall ? 1 : 7, alignItems: 'center',}}>
+        <motion.view style={styles.socialMedia} onClick={() => router.push("https://www.instagram.com/innovo5477/")} whileHover={{scale: 1.1}}>
+            <Image source={InstaHome} style={{width: 35, height: 35}}resizeMode="contain"/>
+          </motion.view>
+          <View style={{flex: 1}}></View>
+          <motion.view  style={styles.socialMedia}  onClick={() => router.push("https://www.tiktok.com/@innovo5477")} whileHover={{scale: 1.1}}>
+            <Image source={TTHome} style={{width: 35, height: 35}}resizeMode="contain"/>
+          </motion.view>
+          <View style={{flex: 1}}></View>
+          <motion.view  style={styles.socialMedia} onClick={() => router.push("https://www.youtube.com/@RoboticsInnovo5477")} whileHover={{scale: 1.1}}>
+            <Image source={YoutubeHome} style={{width: 35, height: 35}}resizeMode="contain"/>
+          </motion.view>  
+          <View style={{flex: extraSmall ? 1.5 : 2}}></View>
           <Text style={{fontSize: 21, fontWeight: '200', marginLeft: 4, color: pallete.InnovoYellow, fontFamily: 'LeagueSpartan_400Regular'}}>innovo912@gmail.com</Text>
-        {/*</TouchableOpacity>*/}
+        
+      </View>
     </View>
   );
 }
@@ -322,30 +338,117 @@ export function TopBar() {
 
   const [width, height] = useWindowSize();
  
+  const [showMeet, setMeet] = useState(false);
+  const [showHistory, setHistory] = useState(false);
+  const [showSponsor, setSponsor] = useState(false);
 
-  const titleFonts = titleSet(width);
+  const [expand, setExpand] = useState(false);
+
+
+
+
+  // function updateWidths(id: String, )
+
+  const makeSmall = Boolean(width< 800)
+  if (!makeSmall) {
   return (
     <View>
-      <View style={[styles.topbar, {justifyContent: 'space-between'}]}>
-        <TouchableOpacity onPress={() => router.push("/")}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={[styles.topbar, {justifyContent: 'space-between', elevation: 10}]}>
+        <motion.view  style={{cursor: 'pointer', boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)", borderRadius: 10}} onClick={() => router.push("/")} whileHover={{scale: 1.1, boxShadow: "0 0 10px rgba(225, 241, 0, 0.53)"}}>
+          <View style={{flexDirection: 'row', alignItems: 'center', borderRadius: 10, padding: 2}}>
                 <Image source={InnovoWide} style={{marginTop: 5, width: 125, height: 50}}resizeMode="contain"/>
           </View>
-        </TouchableOpacity>  
-        <View style={{alignItems: 'center', flexDirection: 'row-reverse'}}>
-          <TouchableOpacity style={styles.topBarButton} onPress={() => router.push("/meetTeam")}>
-            <Text style={[styles.headerText, {fontSize: titleFonts[0], paddingLeft: titleFonts[1]}, ]}>Meet the Team</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.topBarButton} onPress={() => router.push("/Sponsors")}>
-            <Text style={[styles.headerText, {fontSize: titleFonts[0], paddingLeft: titleFonts[1]}]}>Sponsors</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.topBarButton} onPress={() => router.push("/History")}>
-            <Text style={[styles.headerText, {fontSize: titleFonts[0], paddingLeft: titleFonts[1]}]}>History</Text>
-          </TouchableOpacity>
+        </motion.view>  
+        <View style={{alignItems: 'center', flexDirection: 'row-reverse', gap: 30, marginRight: 10}}>
+          <motion.view style={{marginTop: 5, height: 50, alignContent: 'center ',justifyContent: 'center', cursor: 'pointer',}} onClick={() => router.push("/meetTeam")} onHoverStart={() => (setMeet(true))} onHoverEnd={() => (setMeet(false))}>
+            <Text style={styles.headerText}>Meet the Team</Text>
+            {showMeet && (
+              <View style={{paddingTop: 0}}>
+              <motion.view layout transition={{layout: {duration: 1, type: "spring"}}} style={{originX: 0, height: 2, marginTop: -2, backgroundColor: pallete.InnovoYellow}} initial={{scaleX: 0}} animate={{scaleX: 1}} ></motion.view>
+              </View>
+            )}
+            
+          </motion.view>
+          <motion.view style={{marginTop: 5, height: 50, alignContent: 'center ',justifyContent: 'center', cursor: 'pointer',}} onClick={() => router.push("/Sponsors")} onHoverStart={() => (setSponsor(true))} onHoverEnd={() => (setSponsor(false))}>
+            <Text style={styles.headerText}>Sponsors</Text>
+            {showSponsor && (
+              <View style={{paddingTop: 0}}>
+              <motion.view layout transition={{layout: {duration: 1, type: "spring"}}} style={{originX: 0, height: 2, marginTop: -2, backgroundColor: pallete.InnovoYellow}} initial={{scaleX: 0}} animate={{scaleX: 1}} ></motion.view>
+              </View>
+            )}
+            
+          </motion.view>
+          <motion.view style={{marginTop: 5, height: 50, alignContent: 'center ',justifyContent: 'center', cursor: 'pointer',}} onClick={() => router.push("/meetTeam")} onHoverStart={() => (setHistory(true))} onHoverEnd={() => (setHistory(false))}>
+            <Text style={styles.headerText}>History</Text>
+            {showHistory && (
+              <View style={{paddingTop: 0}}>
+              <motion.view layout transition={{layout: {duration: 1, type: "spring"}}} style={{originX: 0, height: 2, marginTop: -2, backgroundColor: pallete.InnovoYellow}} initial={{scaleX: 0}} animate={{scaleX: 1}} ></motion.view>
+              </View>
+            )}
+          </motion.view>
         </View>
       </View>
     </View>
   );
+  }
+  else {
+    return(
+    <View style={{backgroundColor: pallete.black}}>
+      <View style={[styles.topbar, {justifyContent: 'space-between', elevation: 10, minHeight: 50}]}>
+        <motion.view  style={{cursor: 'pointer', boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)", borderRadius: 10}} onClick={() => router.push("/")} whileHover={{scale: 1.1, boxShadow: "0 0 10px rgba(225, 241, 0, 0.53)"}}>
+          <View style={{flexDirection: 'row', alignItems: 'center', borderRadius: 10, padding: 2}}>
+                <Image source={InnovoWide} style={{ width: 125, height: 50}}resizeMode="contain"/>
+          </View>
+        </motion.view>  
+        <View style={{alignItems: 'center', flexDirection: 'column'}}>
+          <motion.view style={{cursor: 'pointer', alignSelf: 'flex-end'}} onClick={()=> (setExpand(!expand), window.scrollTo({ top: 500, behavior: "smooth" }))}>
+            <Image source={ExpandBar} style={{ width: 50, height: 50}}resizeMode="contain"/>
+          </motion.view>
+        </View>
+        
+      </View>
+      {expand && (
+      <motion.view layout transition={{layout: {duration: 2}}}style={{originY: 0, marginRight: 25, width: 200, alignSelf: 'flex-end', flexDirection: 'column', backgroundColor: pallete.black}} initial={{scaleY: 0}} animate={{scaleY: 1}}>
+        <View>
+              <motion.view style={{paddingTop: 10, height: 50, cursor: 'pointer', alignSelf: 'flex-end',}} onClick={() => router.push("/meetTeam")} onHoverStart={() => (setMeet(true))} onHoverEnd={() => (setMeet(false))}>
+                <Text style={styles.headerText}>Meet the Team</Text>
+                {showMeet && (
+                  <View style={{paddingTop: 0}}>
+                  <motion.view layout transition={{layout: {duration: 1, type: "spring"}}} style={{originX: 0, height: 2, marginTop: -2, backgroundColor: pallete.InnovoYellow}} initial={{scaleX: 0}} animate={{scaleX: 1}} ></motion.view>
+                  </View>
+                )}
+        
+              </motion.view>
+      
+              <motion.view style={{paddingTop: 10, height: 50,  cursor: 'pointer', alignSelf: 'flex-end',}} onClick={() => router.push("/Sponsors")} onHoverStart={() => (setSponsor(true))} onHoverEnd={() => (setSponsor(false))}>
+                <Text style={styles.headerText}>Sponsors</Text>
+                {showSponsor && (
+                  <View style={{paddingTop: 0}}>
+                  <motion.view layout transition={{layout: {duration: 1, type: "spring"}}} style={{originX: 0, height: 2, marginTop: -2, backgroundColor: pallete.InnovoYellow}} initial={{scaleX: 0}} animate={{scaleX: 1}} ></motion.view>
+                  </View>
+                )}
+       
+              </motion.view>
+
+      
+              <motion.view style={{paddingTop: 10, height: 50, cursor: 'pointer', alignSelf: 'flex-end',}} onClick={() => router.push("/meetTeam")} onHoverStart={() => (setHistory(true))} onHoverEnd={() => (setHistory(false))}>
+                <Text style={styles.headerText}>History</Text>
+                {showHistory && (
+                  <View style={{paddingTop: 0}}>
+                  <motion.view layout transition={{layout: {duration: 1, type: "spring"}}} style={{originX: 0, height: 2, marginTop: -2, backgroundColor: pallete.InnovoYellow}} initial={{scaleX: 0}} animate={{scaleX: 1}} ></motion.view>
+                  </View>
+                )}
+              </motion.view>
+      </View>
+            
+      </motion.view>
+      )}
+      
+    </View>
+    );
+  }
+  
+
 }
 
 
@@ -356,18 +459,14 @@ const styles = StyleSheet.create({
   topbar: {
     flexDirection: 'row',
     backgroundColor: pallete.black,
-    padding: 20
+    padding: 20, 
+    
   },
   topBarButton : {
     height: 50, 
     justifyContent: 'center'
   },
-  titleText: {
-    fontFamily: 'Barlow_400Regular',
-    fontSize: 20,
-    color: pallete.InnovoYellow,
-    fontWeight: "500"
-  },
+  
   bigHeadText: {
       fontSize: 50, 
       fontFamily: 'Barlow_400Regular',
@@ -404,10 +503,11 @@ const styles = StyleSheet.create({
 
   headerText: {
     fontFamily: 'LeagueSpartan_400Regular',
-    fontSize: 20,
+    fontSize: 25,
     color: pallete.InnovoYellow,
     fontWeight: "500",
-    paddingLeft: 30,
+    marginBottom: 10,
+    textAlign: 'right'
   },
   headerImage: {
     color: '#525252ff',
@@ -425,6 +525,7 @@ const styles = StyleSheet.create({
     backgroundColor: pallete.bigBox,
     borderRadius: 12,
     padding: 16,
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
   },
   quote: {
     fontFamily: 'Barlow_400Regular',
@@ -436,6 +537,15 @@ const styles = StyleSheet.create({
     marginBottom: 8 , 
     alignSelf: 'center',
     textAlign: 'center', 
+  },
+  socialMedia: {
+    backgroundColor: pallete.accent,
+    cursor: 'pointer',
+    padding: 7,
+    borderRadius: 20,
+    boxShadow: "0 0 10px rgba(192, 206, 0, 0.26)",
+
   }
+  
 
 });

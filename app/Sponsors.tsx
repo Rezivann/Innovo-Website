@@ -88,8 +88,8 @@ export default function HomeScreen() {
       <title>Sponsors</title>
       <Analytics/>
       <TopBar/>
-      <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
-       <ImageBackground blurRadius={0} source={circuitBg} resizeMode='cover'  style={{height: height*.5, width: width, justifyContent: 'center'}}>
+      <ScrollView showsVerticalScrollIndicator={false} bounces={false} style={{position: 'static'}}>
+       <ImageBackground blurRadius={0} source={circuitBg} resizeMode='cover'  style={{height: height*.5, width: width, justifyContent: 'center', }}>
               <View style= {{flex: 1}}></View>
               <View style= {{padding: 0.5, alignItems: 'center', backgroundColor: '#a2a012a8',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
                 <View style={[styles.bigBox, {marginHorizontal: 10, backgroundColor: '#000000',flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', borderRadius: 40}]}>
@@ -107,17 +107,19 @@ export default function HomeScreen() {
       </View>
       
       {sponsors.map((sponsor) => (
-          <View style={[styles.bigBox, {alignSelf: 'center', flexDirection: 'row', marginTop: 40 ,justifyContent: 'center', flexWrap: 'wrap'}]}>
-            <View style={{maxWidth: makeSmall ? width*.85 : width*.5, paddingLeft: 10}}>
+        <View style={{alignSelf: 'center',paddingVertical: 20, paddingHorizontal: 30, display: 'flex',}}>
+          <motion.div style={styles.sponsor} layout transition={{layout: {duration: 1, type: "spring"}}}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(190, 196, 13, 0.45)"}}>
+          <View style={{flexWrap: 'wrap', flexDirection: 'row', flexShrink: 1, }}>
+            <View style={{maxWidth: makeSmall ? width*.85 : width*.5, paddingLeft: 10, paddingRight: 10}}>
               <Text style = {styles.bigHeadText}>{sponsor.name}</Text>
-                          
               <Text style = {styles.subText}>{sponsor.description}</Text>
             </View>
             <View style={{flex: 1}}></View>
-            <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent', padding: 10}} whileHover={{scale: 1.25}}>
+            
               <Image source={sponsor.image} style={{width: sponsor.width, height: sponsor.height, marginHorizontal: 20}}/>
-            </motion.button>
           </View>
+          </motion.div>
+        </View>
       ))}
       <View style={{height: 30}}></View>
       <BottomBar/>
@@ -136,13 +138,24 @@ const styles = StyleSheet.create({
       textDecorationLine: 'underline', 
   },
 
+  sponsor: {
+    marginTop: 40 ,
+    justifyContent: 'center', 
+    flexWrap: 'wrap',
+    marginHorizontal: 20,
+    marginVertical: 10,
+    backgroundColor: pallete.bigBox,
+    borderRadius: 12,
+    padding: 16,
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
+  },
   subText: {
       fontFamily: 'LeagueSpartan_400Regular',
       fontSize: 25, 
       fontWeight: '200', 
       color: pallete.InnovoYellow,
       paddingRight:20, 
-      marginVertical: 2 
+      marginVertical: 2,  
   },
 
   headerText: {
@@ -159,6 +172,7 @@ const styles = StyleSheet.create({
     backgroundColor: pallete.bigBox,
     borderRadius: 12,
     padding: 16,
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
   },
 
 });

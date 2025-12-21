@@ -287,6 +287,7 @@ const styles = StyleSheet.create({
     backgroundColor: pallete.bigBox,
     borderRadius: 12,
     padding: 16,
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
   },
   littleBox: {
     marginHorizontal: 5,

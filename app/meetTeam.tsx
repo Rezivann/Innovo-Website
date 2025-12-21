@@ -1,16 +1,24 @@
 import { useRouter } from 'expo-router';
 import React, { useLayoutEffect, useState, useRef} from 'react';
-import { motion } from 'framer-motion';
+import { animate, motion } from 'framer-motion';
+
 
 import { LinearGradient } from 'expo-linear-gradient';
 
+
 import { useFonts } from '@expo-google-fonts/barlow/useFonts';
+
 
 import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
 
+
 import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
 
+
 import { Analytics } from "@vercel/analytics/react";
+
+
+
 
 
 
@@ -23,6 +31,8 @@ import {
   View,
   ImageSourcePropType,
 } from 'react-native';
+
+
 
 
 import meetTeamPhoto from '../assets/images/meetTeamPhoto.jpg';
@@ -43,39 +53,60 @@ import Steve from '../assets/images/PFPs/Steve.png';
 import Winston from '../assets/images/PFPs/Winston.png';
 
 
+
+
 import { TopBar, BottomBar, pallete } from './index';
 import { ImageBackground } from 'expo-image';
 
 
-type Person = {
+
+
+
+
+  type Person = {
     name: string;
     image: ImageSourcePropType;
     specialrole: string;
+    cardView: boolean;
+    quote: string;
 }
 
+
 const buildTeam: Person[] = [
-    {name: 'Sean Zamidar', image: Sean, specialrole: "Head/Captain"},
-    {name: 'Darren Chen', image: Darren, specialrole: "Captain"},
-    {name: 'Micah Newman', image: Micah, specialrole: ""},
-    {name: 'Winston Lin', image: Winston, specialrole: ""},
-    {name: 'Steve Zamidar', image: Steve, specialrole: ""},
+    {name: 'Sean Zamidar', image: Sean, specialrole: "Head/Captain", cardView: false, quote: "\"INSPIRATIONALQUOTE\""},
+    {name: 'Darren Chen', image: Darren, specialrole: "Captain", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Micah Newman', image: Micah, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Winston Lin', image: Winston, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Steve Zamidar', image: Steve, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
 ]
+
 
 const codingTeam: Person[] = [
-    {name: 'David Balzac', image: David, specialrole: "Head"},
-    {name: 'Ivan Reznikov', image: Ivan, specialrole: ""},
-    {name: 'Shmuel Silver', image: Shmuel, specialrole: ""},
+    {name: 'David Balzac', image: David, specialrole: "Head", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Ivan Reznikov', image: Ivan, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Shmuel Silver', image: Shmuel, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
 ]
 
+
 const outreachTeam: Person[] = [
-    {name: 'Maxx Star', image: Maxx, specialrole: "Head"},
-    {name: 'Michael Persaud', image: Michael, specialrole: ""},
-    {name: 'Mathew Illisaca', image: Mathew, specialrole: ""},
-    {name: 'Mohammad Faiz', image: Mohammad, specialrole: ""},
-    {name: 'Riya Kumar', image: Riya, specialrole: ""},
-    {name: 'Fabian Cadima', image: Fabian, specialrole: ""},
-    {name: 'Alessandra Tetsoti', image: Alessandra, specialrole: ""},
+    {name: 'Maxx Star', image: Maxx, specialrole: "Head", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Michael Persaud', image: Michael, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Mathew Illisaca', image: Mathew, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Mohammad Faiz', image: Mohammad, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Riya Kumar', image: Riya, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Fabian Cadima', image: Fabian, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
+    {name: 'Alessandra Tetsoti', image: Alessandra, specialrole: "", cardView: false, quote: "INSPIRATIONAL QUOTE"},
 ]
+
+
+
+
+
+
+
+
+
+
 
 
 function useWindowSize() {
@@ -91,16 +122,66 @@ function useWindowSize() {
   return size;
 }
 
+
+
+
+
+
 export default function HomeScreen() {
+  const [showCard, setShowCard] = useState(false);
   const router = useRouter();
   const [width, height] = useWindowSize();
 
+
+  const [build, setBuild] = useState(buildTeam);
+  const [code, setCode] = useState(codingTeam);
+  const [outreach, setOutreach] = useState(outreachTeam);
+
+
+  function allClose() {
+    handleEditQuote("Nothing", build, setBuild, false);
+    handleEditQuote("Nothing", code, setCode, false);
+    handleEditQuote("Nothing", outreach, setOutreach, false);
+  }
+  
+ 
+  function handleEditQuote(name: string, team: Person[], setTeam: React.Dispatch<React.SetStateAction<Person[]>>, updatedCard: boolean) {
+        const newList = team.map((member) => {
+            if (member.name === name) {
+                const updatedMember = {
+                    ...member,
+                    cardView: updatedCard,
+                };
+               
+                return updatedMember;
+            }
+            else {
+                const updatedMember = {
+                    ...member,
+                    cardView: false,
+                };
+               
+                return updatedMember;
+            }  
+        })
+        setTeam(newList);
+    }
+
+
+    function editQuote(name: string, team: Person[], setTeam: React.Dispatch<React.SetStateAction<Person[]>>, updatedCard: boolean) {
+      allClose();
+      handleEditQuote(name, team, setTeam, updatedCard);
+    }
+
+
   const makeSmall = Boolean(width < 800);
+
 
   let [fontsLoaded] = useFonts({
         Barlow_400Regular,
         LeagueSpartan_400Regular
     })
+
 
     if (!fontsLoaded) {
         return null;
@@ -129,61 +210,128 @@ export default function HomeScreen() {
       <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>
 
 
-    {buildTeam.map((member: Person) => (
-          <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
-              <View style={makeSmall ? styles.idcardSmall : styles.idcard}>
-                  <View style = {styles.miniBox}>
-                      <View style={styles.pfp}>
-                        <Image source={member.image} style={styles.image}/>
-                    </View>
-                    <Text style={styles.pfpName}>{member.name}</Text>
-                </View>
-                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={styles.leaderText}>{member.specialrole}</Text>
-                </View>
+    {/* <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+    }}>
+      <motion.div
+        style={{
+          background: pallete.bigBox,
+          padding: '3rem 2rem',
+          borderRadius: "8px",
+          boxShadow: "0 0 10px rgba(0,0,0,0.2)",
+        }}
+        whileHover={{
+          scale: 1.05,
+          boxShadow: "0 0 10px rgba(148, 236, 14, 0.2)"
+        }}
+        transition={{
+          layout: {
+            duration: 1,
+            type: 'spring'
+          }
+        }}
+        layout
+        onClick={() => setShowCard(!showCard)}
+      >
+        <motion.text> Hover Click</motion.text>
+        {showCard && (
+          <motion.text style={{width: '100%'}}
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          >
+            "If you're gonna make a choice, make one you're not going to regret"
+          </motion.text>
+        )}
+
+
+      </motion.div>
+
+
+    </div> */}
+    {build.map((member: Person) => (
+          <View style={{paddingVertical: 20, paddingHorizontal: 40, display: 'flex'
+          }}>
+              <motion.div layout transition={{layout: {duration: 1, type: "spring"}}} style={makeSmall ? styles.idcardSmall : styles.idcard}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(241, 249, 6, 0.72)",}} onClick={(() => (editQuote(member.name, build, setBuild, !member.cardView)))}>
+                <View style={{flexDirection: 'row', paddingVertical: 10,}}>
+                    <View style = {styles.miniBox}>
+                        <View style={styles.pfp}>
+                          <Image source={member.image} style={styles.image}/>
+                      </View>
+                      <Text style={[styles.pfpName, {fontSize: makeSmall ? 20 : 25}]}>{member.name}</Text>
+                  </View>
+                  <View style={{flexDirection: 'column-reverse',flex: 1}}>
+                      <Text style={styles.leaderText}>{member.specialrole}</Text>
+                  </View>
+                  </View>
+
+                  {/* {member.cardView && (
+                    <View style={{flex: 1,  marginTop: 20}}>
+                      <motion.text initial={{opacity: 0}} animate={{opacity: 1}} style={styles.subText}>{member.quote}</motion.text>
+                    </View>    
+                  )} */}
+              </motion.div>
             </View>
-            </motion.button>
-      ))}
+     ))}
       </View>
       <View style={[styles.bigBox, {width: 230, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Coding Team: </Text>
       </View>
       <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>
-        {codingTeam.map((member: Person) => (
-          <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
-              <View style={makeSmall ? styles.idcardSmall : styles.idcard}>
-                  <View style = {styles.miniBox}>
-                      <View style={styles.pfp}>
-                        <Image source={member.image} style={styles.image}/>
-                    </View>
-                    <Text style={styles.pfpName}>{member.name}</Text>
-                </View>
-                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={styles.leaderText}>{member.specialrole}</Text>
-                </View>
+        {code.map((member: Person) => (
+          <View style={{paddingVertical: 20, paddingHorizontal: 40, display: 'flex'
+          }}>
+              <motion.div layout transition={{layout: {duration: 1, type: "spring"}}} style={makeSmall ? styles.idcardSmall : styles.idcard}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(241, 249, 6, 0.72)",}} onClick={(() => (editQuote(member.name, code, setCode, !member.cardView)))}>
+                <View style={{flexDirection: 'row', paddingVertical: 10,}}>
+                    <View style = {styles.miniBox}>
+                        <View style={styles.pfp}>
+                          <Image source={member.image} style={styles.image}/>
+                      </View>
+                      <Text style={[styles.pfpName, {fontSize: makeSmall ? 20 : 25}]}>{member.name}</Text>
+                  </View>
+                  <View style={{flexDirection: 'column-reverse',flex: 1}}>
+                      <Text style={styles.leaderText}>{member.specialrole}</Text>
+                  </View>
+                  </View>
+                  {/* {member.cardView && (
+                    <View style={{flex: 1,  marginTop: 20}}>
+                      <motion.text initial={{opacity: 0}} animate={{opacity: 1}} style={styles.subText}>{member.quote}</motion.text>
+                    </View>    
+                  )} */}
+              </motion.div>
             </View>
-            </motion.button>
-      ))}
+     ))}
       </View>
       <View style={[styles.bigBox, {width: 250, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Outreach Team: </Text>
       </View>
       <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>
-        {outreachTeam.map((member: Person) => (
-          <motion.button style={{backgroundColor: 'transparent', borderStyle: 'solid', borderColor: 'transparent'}} whileHover={{scale: 1.1}}>
-              <View style={makeSmall ? styles.idcardSmall : styles.idcard}>
-                  <View style = {styles.miniBox}>
-                      <View style={styles.pfp}>
-                        <Image source={member.image} style={styles.image}/>
-                    </View>
-                    <Text style={styles.pfpName}>{member.name}</Text>
-                </View>
-                <View style={{flexDirection: 'column-reverse',flex: 1}}> 
-                    <Text style={styles.leaderText}>{member.specialrole}</Text>
-                </View>
+        {outreach.map((member: Person) => (
+          <View style={{paddingVertical: 20, paddingHorizontal: 40, display: 'flex'
+          }}>
+              <motion.div layout transition={{layout: {duration: 1, type: "spring"}}} style={makeSmall ? styles.idcardSmall : styles.idcard}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(241, 249, 6, 0.72)"}} onClick={(() => (editQuote(member.name, outreach, setOutreach, !member.cardView)))}>
+                <View style={{flexDirection: 'row', paddingVertical: 10,}}>
+                    <View style = {styles.miniBox}>
+                        <View style={styles.pfp}>
+                          <Image source={member.image} style={styles.image}/>
+                      </View>
+                      <Text style={[styles.pfpName, {fontSize: makeSmall ? 20 : 25}]}>{member.name}</Text>
+                  </View>
+                  <View style={{flexDirection: 'column-reverse',flex: 1}}>
+                      <Text style={styles.leaderText}>{member.specialrole}</Text>
+                  </View>
+                  </View>
+                  {/* {member.cardView && ( 
+                    <View style={{flex: 1,  marginTop: 20}}>
+                      <motion.text initial={{opacity: 0}} animate={{opacity: 1}} style={styles.subText}>{member.quote}</motion.text>
+                    </View>    
+                  )} */}
+              </motion.div>
             </View>
-            </motion.button>
-      ))}
+     ))}
+
 
       </View>
       <View style= {{height: 40}}></View>
@@ -194,41 +342,43 @@ export default function HomeScreen() {
   );
 }
 
+
 const styles = StyleSheet.create({
   bigHeadText: {
       fontFamily: 'Barlow_400Regular',
-      fontSize: 40, 
-      fontWeight: '700', 
-      color: pallete.InnovoYellow, 
-      marginBottom: 8 
+      fontSize: 40,
+      fontWeight: '700',
+      color: pallete.InnovoYellow,
+      marginBottom: 8
   },
   image: {
-        width: 90, 
-        height: 90, 
-        borderRadius: 45, 
-        borderWidth: 3, 
+        width: 90,
+        height: 90,
+        borderRadius: 45,
+        borderWidth: 3,
         borderColor: pallete.InnovoYellow
-        
+       
   },
   leaderText: {
     fontFamily: 'LeagueSpartan_400Regular',
-    fontSize: 20, 
+    fontSize: 20,
     fontWeight: '500',
-    marginLeft: 20, 
+    marginLeft: 20,
     color: pallete.InnovoYellow,
-    paddingRight:20, 
-    marginBottom: 2,
+    paddingRight:20,
+   
     textDecorationLine: 'underline',
     alignSelf: 'flex-end'
   },
   subText: {
       fontFamily: 'Barlow_400Regular',
-      fontSize: 22, 
-      fontWeight: '200', 
+      fontSize: 22,
+      fontWeight: '200',
       color: pallete.InnovoYellow,
-      paddingRight:20, 
-      marginBottom: 2 
+      paddingRight:20,
+      marginBottom: 2
   },
+
 
   headerText: {
     fontSize: 20,
@@ -248,24 +398,23 @@ const styles = StyleSheet.create({
     backgroundColor: pallete.bigBox,
     borderRadius: 12,
     padding: 16,
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
   },
   idcard: {
+    boxShadow: "0 0 10px rgba(232, 239, 27, 0.29)",
     marginHorizontal: 20,
     marginVertical: 10,
+    cursor: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
     backgroundColor: pallete.bigBox,
     borderRadius: 12,
     padding: 16,
-    width: 400, 
-    height: 125, 
-    flexDirection: 'row',
-    shadowOffset: {
-        width: -4,
-        height: 5
-    },
-    shadowColor: '#a2a0128d',
-    shadowRadius: 4,
+    width: 400,
+    minHeight: 100,
+   
     elevation: 10
-    
+   
   },
   pfp: {
     width: 70,
@@ -277,35 +426,38 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   miniBox: {
-    alignItems: 'center', 
-    flexDirection: 'row', 
-    paddingLeft: 20
+   
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingLeft: 20,
+    marginVertical: 10
+   
   },
   pfpName: {
     fontFamily: 'Barlow_400Regular',
-    fontSize: 25, 
+    fontSize: 25,
     fontWeight: '500',
-    marginLeft: 20, 
+    marginLeft: 20,
     color: pallete.InnovoYellow,
-    paddingRight:20, 
+    paddingRight:20,
     marginBottom: 2,
-    
+   
   },
   idcardSmall: {
+   
+    boxShadow: "0 0 10px rgba(232, 239, 27, 0.29)",
     marginHorizontal: 20,
     marginVertical: 10,
+    cursor: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
     backgroundColor: pallete.bigBox,
     borderRadius: 12,
     padding: 16,
-    width: 350, 
-    height: 125, 
-    flexDirection: 'row',
-    shadowOffset: {
-        width: -4,
-        height: 5
-    },
-    shadowColor: '#a2a0128d',
-    shadowRadius: 4,
+    width: 300,
+    minHeight: 70,
+   
     elevation: 10
   },
-});
+}); //CHANGE CURSORSS TO MAKE IT CLICKABLE
+
