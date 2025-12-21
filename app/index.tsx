@@ -265,17 +265,17 @@ export function BottomBar() {
   const extraSmall = Boolean(width < 400);
   return (
     <View style={[styles.topbar, {height:90, justifyContent: 'center'}]}>
-      <View style={{alignSelf: 'center', flexDirection: 'row', justifyContent: 'center', gap: extraSmall ? 1 : 7, alignItems: 'center',}}>
+      <View style={{alignSelf: 'center', flexDirection: 'row', justifyContent: 'center', gap: extraSmall ? 0 : 7, alignItems: 'center'}}>
         <motion.view style={styles.socialMedia} onClick={() => router.push("https://www.instagram.com/innovo5477/")} whileHover={{scale: 1.1}}>
-            <Image source={InstaHome} style={{width: 35, height: 35}}resizeMode="contain"/>
+            <Image source={InstaHome} style={{width: 35, height: 35, marginHorizontal: -2}}resizeMode="contain"/>
           </motion.view>
           <View style={{flex: 1}}></View>
           <motion.view  style={styles.socialMedia}  onClick={() => router.push("https://www.tiktok.com/@innovo5477")} whileHover={{scale: 1.1}}>
-            <Image source={TTHome} style={{width: 35, height: 35}}resizeMode="contain"/>
+            <Image source={TTHome} style={{width: 35, height: 35, marginHorizontal: -2}}resizeMode="contain"/>
           </motion.view>
           <View style={{flex: 1}}></View>
           <motion.view  style={styles.socialMedia} onClick={() => router.push("https://www.youtube.com/@RoboticsInnovo5477")} whileHover={{scale: 1.1}}>
-            <Image source={YoutubeHome} style={{width: 35, height: 35}}resizeMode="contain"/>
+            <Image source={YoutubeHome} style={{width: 35, height: 35, marginHorizontal: -2}}resizeMode="contain"/>
           </motion.view>  
           <View style={{flex: extraSmall ? 1.5 : 2}}></View>
           <Text style={{fontSize: 21, fontWeight: '200', marginLeft: 4, color: pallete.InnovoYellow, fontFamily: 'LeagueSpartan_400Regular'}}>innovo912@gmail.com</Text>
@@ -543,7 +543,7 @@ const styles = StyleSheet.create({
     cursor: 'pointer',
     padding: 7,
     borderRadius: 20,
-    boxShadow: "0 0 10px rgba(192, 206, 0, 0.26)",
+    boxShadow: "0 0 10px rgba(0,0,0,0)" 
 
   }
   
