@@ -115,8 +115,7 @@ export default function HomeScreen() {
               <Text style = {styles.subText}>{sponsor.description}</Text>
             </View>
             <View style={{flex: 1}}></View>
-            
-              <Image source={sponsor.image} style={{width: sponsor.width, height: sponsor.height, marginHorizontal: 20}}/>
+              <Image source={sponsor.image} style={{width: sponsor.width, height: sponsor.height, marginHorizontal: 20, marginTop: 20}}/>
           </View>
           </motion.div>
         </View>
@@ -141,6 +140,7 @@ const styles = StyleSheet.create({
   sponsor: {
     marginTop: 40 ,
     justifyContent: 'center', 
+    alignItems: 'center',
     flexWrap: 'wrap',
     marginHorizontal: 20,
     marginVertical: 10,
