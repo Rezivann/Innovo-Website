@@ -378,7 +378,7 @@ export function TopBar() {
             )}
             
           </motion.view>
-          <motion.view style={{marginTop: 5, height: 50, alignContent: 'center ',justifyContent: 'center', cursor: 'pointer',}} onClick={() => router.push("/meetTeam")} onHoverStart={() => (setHistory(true))} onHoverEnd={() => (setHistory(false))}>
+          <motion.view style={{marginTop: 5, height: 50, alignContent: 'center ',justifyContent: 'center', cursor: 'pointer',}} onClick={() => router.push("/History")} onHoverStart={() => (setHistory(true))} onHoverEnd={() => (setHistory(false))}>
             <Text style={styles.headerText}>History</Text>
             {showHistory && (
               <View style={{paddingTop: 0}}>
@@ -431,7 +431,7 @@ export function TopBar() {
               </motion.view>
 
       
-              <motion.view style={{paddingTop: 10, height: 50, cursor: 'pointer', alignSelf: 'flex-end',}} onClick={() => router.push("/meetTeam")} onHoverStart={() => (setHistory(true))} onHoverEnd={() => (setHistory(false))}>
+              <motion.view style={{paddingTop: 10, height: 50, cursor: 'pointer', alignSelf: 'flex-end',}} onClick={() => router.push("/History")} onHoverStart={() => (setHistory(true))} onHoverEnd={() => (setHistory(false))}>
                 <Text style={styles.headerText}>History</Text>
                 {showHistory && (
                   <View style={{paddingTop: 0}}>
