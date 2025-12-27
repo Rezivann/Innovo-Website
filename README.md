@@ -1,1 +1,1 @@
-This is the website for my First Tech Challenge team, Innovo.  It was built using Expo and React Native, incorporating various animations from the framer-motion library.  It is also currently hosted on Vercel and can be accessed with the link, [innovo5477.com](url).
+This is the website for my First Tech Challenge team, Innovo.  It was built using Expo and React Native, incorporating various animations from the framer-motion library.  It is also currently hosted on Vercel and can be accessed the link, [innovo5477.com](https://www.innovo5477.com/)
