@@ -119,7 +119,7 @@ export default function HomeScreen() {
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award 3rd Place</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>July 25-27, 2025</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>July 25th-27th, 2025</Text>
                         </View>
                       </View>
                       <View style={styles.specialLittleBox}>
@@ -128,7 +128,7 @@ export default function HomeScreen() {
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>March 16, 2025</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>March 16th, 2025</Text>
                         </View>
                       </View>
                       <View style={styles.littleBox}>
