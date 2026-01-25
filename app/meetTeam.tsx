@@ -304,7 +304,7 @@ export default function HomeScreen() {
             </View>
      ))}
       </View>
-      <View style={[styles.bigBox, {width: 250, height: 70, marginTop: 20}]}>
+      <View style={[styles.bigBox, {width: 259, height: 70, marginTop: 20}]}>
         <Text style={[styles.bigHeadText, {fontSize: 30}]}>Outreach Team: </Text>
       </View>
       <View style={{flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', backgroundColor: pallete.bgColor}}>

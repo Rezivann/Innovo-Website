@@ -88,7 +88,16 @@ export default function HomeScreen() {
                     <View style={{flex: 1,}}>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #1</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #3</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award 2nd Place</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>January 18th, 2026</Text>
+                        </View>
+                      </View>
+                      <View style={styles.littleBox}>
+                        <View style={{flex: 2, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #1</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance Captain</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award</Text>
                         </View>
@@ -116,7 +125,7 @@ export default function HomeScreen() {
                       <View style={styles.specialLittleBox}>
                         <View style={{flex: 2, padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Championship</Text>
-                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award 1st Place</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>March 16, 2025</Text>
@@ -124,7 +133,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #4</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #4</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Connect Award</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
@@ -133,7 +142,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #3</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #3</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance Captain</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award</Text>
                           
@@ -144,7 +153,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #2</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #2</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>January 19th, 2025</Text>
@@ -167,7 +176,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #5</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #5</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance: 1st Team Selected</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Motivate Award 3rd Place</Text>
                           
@@ -178,7 +187,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #4</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #4</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award 2nd Place</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Think Award</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Connect Award 2nd Place</Text>
@@ -191,7 +200,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #3</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #3</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>January 14th, 2024</Text>
@@ -213,7 +222,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #3</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #3</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance: 1st Team Selected</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Connect Award</Text>
                           
@@ -224,7 +233,7 @@ export default function HomeScreen() {
                       </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
-                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Quallifier #2</Text>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #2</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Finalist Alliance: Captain</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Control Award</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Design Award 3rd Place</Text>
