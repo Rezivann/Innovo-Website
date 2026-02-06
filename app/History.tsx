@@ -88,6 +88,16 @@ export default function HomeScreen() {
                     <View style={{flex: 1,}}>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #5</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Finalist Alliance Captain</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award 2nd Place</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>February 1st, 2026</Text>
+                        </View>
+                      </View>
+                      <View style={styles.littleBox}>
+                        <View style={{flex: 2, padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #3</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award 2nd Place</Text>
                         </View>
