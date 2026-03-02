@@ -86,6 +86,16 @@ export default function HomeScreen() {
         <View style={[styles.bigBox, {marginTop: 40, flexShrink: 1, backgroundColor: '#181818ff'}]}>                  
                     <Text style = {[styles.bigHeadText, {marginLeft: 10}]}>2025-2026: Decode</Text>
                     <View style={{flex: 1,}}>
+                      <View style={styles.specialLittleBox}>
+                        <View style={{flex: 2, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Championship</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance Partner</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award 1st Place</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>March 1st, 2026</Text>
+                        </View>
+                      </View>
                       <View style={styles.littleBox}>
                         <View style={{flex: 2, padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Qualifier #5</Text>
