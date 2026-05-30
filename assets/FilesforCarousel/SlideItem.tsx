@@ -12,11 +12,19 @@ import {
 import type { AnimatedProps } from "react-native-reanimated";
 import Animated from "react-native-reanimated";
 
-import image1 from '../images/Slideshow/Image1.jpg';
+import image1 from '../images/Slideshow/Image1.png';
 import image2 from '../images/Slideshow/Image2.png';
-import image3 from '../images/Slideshow/Image3.jpg';
-import image4 from '../images/Slideshow/Image4.jpg';
+import image3 from '../images/Slideshow/Image3.png';
+import image4 from '../images/Slideshow/Image4.png';
 import image5 from '../images/Slideshow/Image5.png';
+import image6 from '../images/Slideshow/Image6.png';
+import image7 from '../images/Slideshow/Image7.png';
+import image8 from '../images/Slideshow/Image8.png';
+import image9 from '../images/Slideshow/Image9.png';
+import image10 from '../images/Slideshow/Image10.png';
+import image11 from '../images/Slideshow/Image11.png';
+import image12 from '../images/Slideshow/Image12.png';
+
 
 
 interface Props extends AnimatedProps<ViewProps> {
@@ -27,7 +35,7 @@ interface Props extends AnimatedProps<ViewProps> {
   colorFill?: boolean;
 }
 
-const images = [image1, image2, image3, image4, image5]
+const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12]
 
 export const SlideItem: React.FC<Props> = (props) => {
   const {

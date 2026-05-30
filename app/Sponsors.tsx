@@ -34,6 +34,7 @@ import InnovoPFP from '../assets/images/InnovoLogo.png';
 import FRCTees from '../assets/images/Sponsors/FRCTees.png';
 import Haas from '../assets/images/Sponsors/Haas.png';
 import Polymaker from '../assets/images/Sponsors/Polymaker.png';
+import Statefarm from '../assets/images/Sponsors/Statefarm.png';
 import HWPSEF from '../assets/images/Sponsors/HWPSEF.png';
 
 import circuitBg from '../assets/images/circuitBg.png';
@@ -63,8 +64,10 @@ type Sponsor = {
 
 const sponsors: Sponsor[] = [
     {name: 'FRCTees', description: 'They make all of our merch for the 2025-2026 season.', image: FRCTees, width: 250, height: 100},
-    {name: 'Gene Haas Foundation', description: "Their grant has removed financial restrictions we've had when building our robots.", image: Haas, width: 100, height: 100},
+    {name: 'Gene Haas Foundation', description: "Their grant helped us afford parts for our robots this year.", image: Haas, width: 100, height: 100},
+    {name: 'HWPS Endowment Fund', description: "Their grant helped us afford parts for our robots this year.", image: HWPSEF, width: 100, height: 100},
     {name: 'Polymaker', description: "They have given us filament to incorporate into our robot's design.", image: Polymaker, width: 250, height: 100},
+    {name: 'Statefarm', description: "They helped fundraise for our trip to the World Championship and for the 2026-2027 season.", image: Statefarm, width: 270, height: 100},
 ]
 
 
@@ -110,12 +113,12 @@ export default function HomeScreen() {
         <View style={{alignSelf: 'center',paddingVertical: 20, paddingHorizontal: 30, display: 'flex',}}>
           <motion.div style={styles.sponsor} layout transition={{layout: {duration: 1, type: "spring"}}}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(190, 196, 13, 0.45)"}}>
           <View style={{flexWrap: 'wrap', flexDirection: 'row', flexShrink: 1, }}>
-            <View style={{maxWidth: makeSmall ? width*.85 : width*.5, paddingLeft: 10, paddingRight: 10}}>
+            <View style={{maxWidth: makeSmall ? width*.85 : width*.5, paddingLeft: 20, paddingRight: 20}}>
               <Text style = {styles.bigHeadText}>{sponsor.name}</Text>
               <Text style = {styles.subText}>{sponsor.description}</Text>
             </View>
             <View style={{flex: 1}}></View>
-              <Image source={sponsor.image} style={{width: sponsor.width, height: sponsor.height, marginHorizontal: 20, marginTop: 20}}/>
+              <Image source={sponsor.image} style={{width: sponsor.width, height: sponsor.height, marginHorizontal: 20, marginTop: makeSmall ? 30 : 10}}/>
           </View>
           </motion.div>
         </View>
