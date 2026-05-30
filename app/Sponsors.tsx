@@ -67,7 +67,7 @@ const sponsors: Sponsor[] = [
     {name: 'Gene Haas Foundation', description: "Their grant helped us afford parts for our robots this year.", image: Haas, width: 100, height: 100},
     {name: 'HWPS Endowment Fund', description: "Their grant helped us afford parts for our robots this year.", image: HWPSEF, width: 100, height: 100},
     {name: 'Polymaker', description: "They have given us filament to incorporate into our robot's design.", image: Polymaker, width: 250, height: 100},
-    {name: 'State Farm Nicole Eliopoulos Agency', description: "They helped fundraise for our trip to the World Championship and for the 2026-2027 season.", image: Statefarm, width: 270, height: 150},
+    {name: 'State Farm Nicole Eliopoulos Agency', description: "She helped fundraise for our trip to the World Championship and for the 2026-2027 season.", image: Statefarm, width: 270, height: 150},
 ]
 
 
