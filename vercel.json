@@ -3,17 +3,14 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "outputDirectory": "dist",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
     },
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/404.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
