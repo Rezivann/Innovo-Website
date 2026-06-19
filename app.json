@@ -36,7 +36,8 @@
           "backgroundColor": "#ffffff",
           "dark": {
             "backgroundColor": "#000000"
-          }
+          },
+          "sitemap": false
         }
         
         
