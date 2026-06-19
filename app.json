@@ -26,12 +26,12 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      [
+      // [
         "expo-router",
-        {
-          "origin": "https://www.innovo5477.com"
-        }
-      ],
+      //   {
+      //     "origin": "https://www.innovo5477.com"
+      //   }
+      // ],
       
       [
         "expo-splash-screen",
@@ -42,7 +42,8 @@
           "backgroundColor": "#ffffff",
           "dark": {
             "backgroundColor": "#000000"
-          }
+          },
+          "sitemap": false
         }
         
         
