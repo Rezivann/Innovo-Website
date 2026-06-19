@@ -94,6 +94,23 @@ export default function HomeScreen() {
                     <View style={{flex: 1,}}>
                       <View style={styles.specialLittleBox}>
                         <View style={{flex: 2, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>Multinational Tech Invitational</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>June 26th-28th, 2026</Text>
+                        </View>
+                      </View>
+                      <View style={styles.specialLittleBox}>
+                        <View style={{flex: 2, padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize}]}>FIRST World Championship - Jackson Division</Text>
+                          <Text style={[styles.award, {fontSize: littlefontSize}]}>-Connect Award 3rd Place</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row-reverse', padding: 10}}>
+                          <Text style={[styles.subText, {fontSize: littlefontSize, textAlign: 'right'}]}>April 29th - May 2nd, 2026</Text>
+                        </View>
+                      </View>
+                      <View style={styles.specialLittleBox}>
+                        <View style={{flex: 2, padding: 10}}>
                           <Text style={[styles.subText, {fontSize: littlefontSize}]}>Long Island Championship</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Winning Alliance Partner</Text>
                           <Text style={[styles.award, {fontSize: littlefontSize}]}>-Inspire Award 1st Place</Text>

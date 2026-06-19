@@ -46,11 +46,18 @@ import ExpandBar from '../assets/images/Expand.png';
 
 
 
-import image1 from '../assets/images/Slideshow/Image1.jpg';
+import image1 from '../assets/images/Slideshow/Image1.png';
 import image2 from '../assets/images/Slideshow/Image2.png';
-import image3 from '../assets/images/Slideshow/Image3.jpg';
-import image4 from '../assets/images/Slideshow/Image4.jpg';
+import image3 from '../assets/images/Slideshow/Image3.png';
+import image4 from '../assets/images/Slideshow/Image4.png';
 import image5 from '../assets/images/Slideshow/Image5.png';
+import image6 from '../assets/images/Slideshow/Image6.png';
+import image7 from '../assets/images/Slideshow/Image7.png';
+import image8 from '../assets/images/Slideshow/Image8.png';
+import image9 from '../assets/images/Slideshow/Image9.png';
+import image10 from '../assets/images/Slideshow/Image10.png';
+import image11 from '../assets/images/Slideshow/Image11.png';
+import image12 from '../assets/images/Slideshow/Image12.png';
 
 import teamPhoto from '../assets/images/TeamPhoto.png';
 import NewMichael from '../assets/images/NewMichaelV2.png';
@@ -216,7 +223,7 @@ export default function HomeScreen() {
   );
 }
 
-const images = [image1, image2, image3, image4, image5]
+const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12]
 
 const widthAboveZero = ((width: number) => {
   if (width === 0) {
@@ -303,14 +310,14 @@ function StatsBar() {
           <View style={[styles.bigBox, {flex: 1 , alignItems: 'stretch', maxWidth: width*0.9}]}>
             <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-evenly', paddingBottom: 20}}>
               <View style={{paddingHorizontal: 30, alignItems: 'center', flex: 2}}>
-                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>14</Text>
+                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>15</Text>
                 <Text style = {[styles.littleStat, {fontSize: statNums[1]}]}>Seasons played</Text>
               </View>
               
               <View style={{ backgroundColor: pallete.InnovoYellow, width: 1}}></View>
 
               <View style={{paddingHorizontal: 30, alignItems: 'center', flex: 2}}>
-                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>18</Text>
+                <Text style = {[styles.bigStat, {fontSize: statNums[0]}]}>24</Text>
                 <Text style = {[styles.littleStat, {fontSize: statNums[1]}]}>Awards won since 2022</Text>
               </View>
 
