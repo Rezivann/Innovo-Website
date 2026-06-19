@@ -1,27 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
+export async function GET() {
+  const baseUrl = "https://innovo5477.com";
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://sitemaps.org">
   <url>
-    <loc>https://innovo5477.com</loc>
+    <loc>${baseUrl}</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://innovo5477.com/History</loc>
+    <loc>${baseUrl}/History</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://innovo5477.com/Sponsors</loc>
+    <loc>${baseUrl}/Sponsors</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://innovo5477.com/meetTeam</loc>
+    <loc>${baseUrl}/meetTeam</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-</urlset>
+</urlset>`.trim();
+
+  return new Response(xml, {
+    headers: {
+        "Content-Type": "application/xml",
+    }
+  });
+}
