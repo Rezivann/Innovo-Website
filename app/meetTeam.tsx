@@ -17,7 +17,11 @@ import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
 
 import { Analytics } from "@vercel/analytics/react";
 
-
+import {Metadata} from 'next';
+export const metadata: Metadata = {
+  title: 'Meet the Team | Innovo',
+  description: "See our entire roster across our building, coding, and outreach departments."
+}
 
 
 

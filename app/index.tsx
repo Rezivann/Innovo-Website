@@ -58,6 +58,12 @@ import Michael from '../assets/images/Michael.jpg';
 import { ImageBackground, ImageProps } from 'expo-image';
 import { scale } from 'framer-motion';
 
+import {Metadata} from 'next';
+export const metadata: Metadata = {
+  title: 'Homepage | Innovo',
+  description: "See our team's description, statistics, social media, and photos."
+}
+
 export const pallete = {
   InnovoYellow: '#eeea09ff',
   black: '#000000',

@@ -12,6 +12,12 @@ import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
 
 import { Analytics } from "@vercel/analytics/react";
 
+import {Metadata} from 'next';
+export const metadata: Metadata = {
+  title: 'Sponsors | Innovo',
+  description: "See the various sponsors that helped bring our team to success."
+}
+
 
 import {
   Animated,

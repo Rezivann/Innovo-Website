@@ -10,6 +10,12 @@ import { Barlow_400Regular,} from '@expo-google-fonts/barlow';
 import { LeagueSpartan_400Regular,} from '@expo-google-fonts/league-spartan';
 import { Analytics } from "@vercel/analytics/react";
 
+import {Metadata} from 'next';
+export const metadata: Metadata = {
+  title: 'History | Innovo',
+  description: "See our entire competition history, including awards we have won in the past."
+}
+
 
 import {
   Image,
