@@ -14,8 +14,8 @@ import { Analytics } from "@vercel/analytics/react";
 
 import {Metadata} from 'next';
 export const metadata: Metadata = {
-  title: 'Sponsors | Innovo',
-  description: "See the various sponsors that helped bring our team to success."
+  title: 'Sponsor Flyer | Innovo',
+  description: "See the a flyer that offers various sponsorship offers for local businesses."
 }
 
 
@@ -35,13 +35,7 @@ import {
   Pressable,
   Easing,
 } from 'react-native';
-import InnovoPFP from '../assets/images/InnovoLogo.png';
-
-import FRCTees from '../assets/images/Sponsors/FRCTees.png';
-import Haas from '../assets/images/Sponsors/Haas.png';
-import Polymaker from '../assets/images/Sponsors/Polymaker.png';
-import Statefarm from '../assets/images/Sponsors/Statefarm.png';
-import HWPSEF from '../assets/images/Sponsors/HWPSEF.png';
+import flyer from '../assets/images/Sponsors/Flyer.png'
 
 import circuitBg from '../assets/images/circuitBg.png';
 
@@ -60,28 +54,16 @@ function useWindowSize() {
   }, []);
   return size;
 }
-type Sponsor = {
-    name: string;
-    description: string;
-    image: ImageSourcePropType;
-    width: number;
-    height: number;
-}
-
-const sponsors: Sponsor[] = [
-    {name: 'FRCTees', description: 'They make all of our merchandise for the 2025-2026 season.', image: FRCTees, width: 250, height: 100},
-    {name: 'Gene Haas Foundation', description: "Their grant helped us afford parts for our robots this year.", image: Haas, width: 100, height: 100},
-    {name: 'HWPS Endowment Fund', description: "Their grant helped us afford parts for our robots this year.", image: HWPSEF, width: 100, height: 100},
-    {name: 'Polymaker', description: "They have given us filament to incorporate into our robot's design.", image: Polymaker, width: 250, height: 100},
-    {name: 'State Farm Nicole Eliopoulos Agency', description: "She helped fundraise for our trip to the World Championship and for the 2026-2027 season.", image: Statefarm, width: 270, height: 150},
-]
 
 
-export default function HomeScreen() {
+
+export default function SponsorFlyerScreen() {
   const router = useRouter();
   const [width, height] = useWindowSize();
 
   const makeSmall = Boolean(width < 800);
+  const imageWidth = Math.min(700, width*0.93)
+  const imageHeight = imageWidth/0.6669
 
   let [fontsLoaded] = useFonts({
     Barlow_400Regular,
@@ -94,37 +76,16 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#272727' }}>
-      <title>Sponsors</title>
+      <title>Sponsor Flyer</title>
       <Analytics/>
       <TopBar/>
       <ScrollView showsVerticalScrollIndicator={false} bounces={false} style={{position: 'static'}}>
-       <ImageBackground blurRadius={0} source={circuitBg} resizeMode='cover'  style={{height: height*.5, width: width, justifyContent: 'center', }}>
-              <View style= {{flex: 1}}></View>
-              <View style= {{padding: 0.5, alignItems: 'center', backgroundColor: '#a2a012a8',justifyContent: 'center', alignSelf: 'center', shadowOffset: { width: 0, height: 0}, shadowColor: '#a2a0127c', shadowRadius: 10, elevation: 10, borderRadius: 40}}>
-                <View style={[styles.bigBox, {marginHorizontal: 10, backgroundColor: '#000000',flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', borderRadius: 40}]}>
-                      <Text style={[styles.bigHeadText, {fontSize: 45, paddingHorizontal: 10, textDecorationLine: 'none'}]}>Sponsors</Text>
-                </View>
-              </View>
-              <View style={{flex: 1, flexDirection: 'column-reverse'}}>
-                  <LinearGradient colors={['#27272700', '#272727']} style={{height: 100, width: 'auto'}} />
-              </View>
-        </ImageBackground>
+       
 
-      <motion.div style={styles.flyerButton} layout transition={{layout: {duration: 1, type: "spring"}}}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(190, 196, 13, 0.45)"}} onClick={() => router.push("/sponsorFlyer")}>
-  
-        <View style={{maxWidth: makeSmall ? width*.85 : width*.5, paddingLeft: 20, paddingRight: 20}}>
-          <Text style = {styles.bigHeadText}>Learn more about Sponsoring Innovo</Text>
-        </View>
-          
-      </motion.div>
-
+{/*       
       <View style={[styles.bigBox, {marginTop:  50, alignItems: 'center', alignSelf: 'center'}]}>
         <Text style={styles.headerText}>Thank you to all of our sponsors.  Your support is very appreciated and will help us get far this year!</Text>
       </View>
-
-      
-
-      
       
       {sponsors.map((sponsor) => (
         <View style={{alignSelf: 'center',paddingVertical: 20, paddingHorizontal: 30, display: 'flex',}}>
@@ -139,9 +100,13 @@ export default function HomeScreen() {
           </View>
           </motion.div>
         </View>
-      ))}
-      <View style={{height: 30}}></View>
-      <BottomBar/>
+      ))} */}
+
+        <View style={[styles.bigBox, {marginTop:  10, alignItems: 'center', alignSelf: 'center', flexShrink: 1}]}>
+            <Image resizeMode="contain" source={flyer} style={{width: imageWidth, height: imageHeight}}/>
+        </View>
+        <View style={{height: 50}}></View>
+        <BottomBar/>
       </ScrollView>
     </SafeAreaView>
   );
@@ -155,20 +120,6 @@ const styles = StyleSheet.create({
       marginBottom: 8,
       fontSize: 40, 
       textDecorationLine: 'underline', 
-  },
-  flyerButton: {
-    marginTop: 40 ,
-    justifyContent: 'center', 
-    alignSelf: 'center',
-    alignItems: 'center',
-    flex:1,
-    cursor: 'pointer',
-    marginHorizontal: 20,
-    marginVertical: 10,
-    backgroundColor: pallete.bigBox,
-    borderRadius: 12,
-    padding: 16,
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
   },
 
   sponsor: {
