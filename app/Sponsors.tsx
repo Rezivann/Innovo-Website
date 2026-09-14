@@ -113,7 +113,7 @@ export default function HomeScreen() {
       <motion.div style={styles.flyerButton} layout transition={{layout: {duration: 1, type: "spring"}}}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(190, 196, 13, 0.45)"}} onClick={() => router.push("/sponsorFlyer")}>
   
         <View style={{maxWidth: makeSmall ? width*.85 : width*.5, paddingLeft: 20, paddingRight: 20}}>
-          <Text style = {styles.bigHeadText}>Learn more about Sponsoring Innovo</Text>
+          <Text style = {styles.headerText}>Learn more about Sponsoring Innovo</Text>
         </View>
           
       </motion.div>
