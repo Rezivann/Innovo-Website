@@ -110,10 +110,10 @@ export default function HomeScreen() {
               </View>
         </ImageBackground>
 
-      <motion.div style={styles.flyerButton} layout transition={{layout: {duration: 1, type: "spring"}}}  whileHover={{scale: 1.1, boxShadow: "0 0 20px rgba(190, 196, 13, 0.45)"}} onClick={() => router.push("/sponsorFlyer")}>
+      <motion.div animate={{scale:1.2, boxShadow: "0 0 20px rgba(190, 196, 13, 0.45)" }} style={styles.flyerButton} layout transition={{layout: {duration: 1, type: "spring"}, repeat:Infinity, repeatType: "reverse", ease: "easeInOut", duration: 2}}  whileHover={{}} onClick={() => router.push("/sponsorFlyer")}>
   
-        <View style={{maxWidth: makeSmall ? width*.85 : width*.5, paddingLeft: 20, paddingRight: 20}}>
-          <Text style = {styles.headerText}>Learn more about Sponsoring Innovo</Text>
+        <View style={{maxWidth: makeSmall ? width*.65 : width*.5, paddingLeft: 20, paddingRight: 20}}>
+          <Text style = {styles.flyerText}>Learn more about Sponsoring Innovo</Text>
         </View>
           
       </motion.div>
@@ -165,10 +165,17 @@ const styles = StyleSheet.create({
     cursor: 'pointer',
     marginHorizontal: 20,
     marginVertical: 10,
-    backgroundColor: pallete.bigBox,
-    borderRadius: 12,
+    backgroundColor: "#e3d100",
+    borderRadius: 32,
     padding: 16,
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.53)",
+    boxShadow: "0 0 20px rgba(98, 97, 21, 0.52)",
+  },
+  flyerText: {
+    fontFamily: 'LeagueSpartan_400Regular',
+    fontSize: 30,
+    color: pallete.bigBox,
+    fontWeight: "500",
+    textAlign: 'center'
   },
 
   sponsor: {
